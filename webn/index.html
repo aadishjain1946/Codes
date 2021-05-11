@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>repl.it</title>
+  <style>
+    .container {
+      margin: 0 20%;
+    }
+
+    .mrg-btm {
+      border-bottom: 1px solid grey;
+    }
+
+    .cntr {
+      text-align: center;
+    }
+
+    .calcul input {
+      width: 50%;
+      height: 25px;
+      margin: 10px 0px;
+      padding: 0px 0px 0px 5px;
+    }
+
+    .calcul label {
+      display: block;
+    }
+
+    .calcul {
+      border: 3px solid darkolivegreen;
+      padding: 10px;
+    }
+
+    .clcbtn {
+      display: block;
+      padding: 5px;
+      width: 20%;
+      background-color: darkslategray;
+      border: none;
+      color: aliceblue;
+    }
+
+    .out {
+      display: block;
+      font-size: large;
+      margin: 7px 0px;
+      color: darkslateblue;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- heading for the page -->
+  <div id="heading" class="mrg-btm">
+    <div class="container cntr">
+      <h1>Karvonen Calculator</h1>
+    </div>
+  </div>
+  <!-- Karvonen description -->
+  <div class="container">
+    <div class="content">
+      <p>The Karvonen Formula is used to find the target heart rate of a person. It is calculated by multiplying table
+        percentage value and heat rate reserve plus resting heart rate.
+        <br>
+      <h3>karvonen Value = [Heart Rate Reserve * Table Percentage Value + Resting Heart Rate]</h3>
+      <br>
+      Generally, we should use Maximum Heart Rate and resting heart rate to calculate Karvonen value but if the Maximum
+      Heart Rate value is not given and instead of its value of age is given then we can also calculate Karvonen value.
+      <br>
+      <h3>karvonen Value = [220 - age - Resting Heart Rate] ---(for male)</h3>
+      <h3>karvonen Value = [226 - age - Resting Heart Rate] ---(for female)</h3>
+      </p>
+    </div>
+  </div>
+  <!-- ui for Karvonen calculator -->
+  <div class="container">
+    <div class="calcul">
+      <h2>Calculate karvonen Value</h2>
+      <label for="Resting">Resting Heart Rate</label>
+      <input type="text" id="Resting" placeholder="Enter value in bmp">
+      <label for="Maximum">Maximum Heart Rate</label>
+      <input type="text" id="Maximum" placeholder="Enter value in bmp">
+      <label for="Table">Table Percentage Value</label>
+      <input type="text" id="Table" placeholder="Enter value (0 - 100%)">
+      <button class="clcbtn" onclick="calculate()">Calculate</button>
+      <span id="output" class="out"></span>
+    </div>
+  </div>
+  <!-- script to calculate Karvonen value -->
+  <script>
+    //function to calculate karvonen Value
+    function calculate() {
+      var r = document.getElementById("Resting").value;
+      var m = document.getElementById("Maximum").value;
+      var p = document.getElementById("Table").value;
+      r = parseInt(r);
+      m = parseInt(m);
+      p = parseInt(p);
+      p /= 100;
+      var h = m - r;
+      var k = h * p + r;
+      var out = "karvonen Value for " + (p * 100) + "% is " + k;
+      document.getElementById("output").innerHTML = out;
+    }
+  </script>
+</body>
+
+</html>

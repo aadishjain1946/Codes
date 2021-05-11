@@ -1,0 +1,4 @@
+Name 	Address 	City 	Father Name 	Department
+franklin 	sample address1 	sample city2 	abcdef 	dep1
+jack 	sample address 	sample address 	def 	dep2
+Sam 	sample address 	sample city 	abcd 	dep1

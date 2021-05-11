@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <style>
+        .asg {
+            border: 1px solid black;
+            padding: 10px 0px;
+            margin: 40px;
+            box-shadow: 3px 3px 5px 6px #ccc;
+        }
+
+        .brd {
+            border: 1px solid black;
+            padding: 0px 5px;
+            border-radius: 50%;
+        }
+
+        .re {
+            color: red;
+        }
+
+        .brdcol {
+            border: 3px solid rgb(63, 94, 251);
+            padding: 10px;
+            border-radius: 25px;
+        }
+
+        p {
+            animation: fadeIn ease 2s;
+            -webkit-animation: fadeIn ease 2s;
+            -moz-animation: fadeIn ease 2s;
+            -o-animation: fadeIn ease 2s;
+            -ms-animation: fadeIn ease 2s;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-12" style="text-align: center;">
+            <h3 class="asg">Assignment</h3>
+        </div>
+        <div class="container">
+            <div class="row brdcol">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="numbers"><strong>Enter Numbers <small>(Saperated by ',' )</small></strong></label>
+                        <input type="text" class="form-control" id="numbers" placeholder="ex-: 123,345">
+                        <span id="errmsg" class="re"></span>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label for="sel"><strong>Select Operation</strong></label> <span class="brd" data-toggle="tooltip"
+                        data-placement="top" title="Select option to manipulate number entered by you.">?</span>
+                    <select id="sel" class="form-control">
+                        <option value="" hidden>Default select</option>
+                        <option value="1">Minimum</option>
+                        <option value="2">Maximum</option>
+                        <option value="3">Product</option>
+                        <option value="4">Sum</option>
+                        <option value="5">Average</option>
+                        <option value="6">Standard Deviation</option>
+                        <option value="7">Median</option>
+                        <option value="8">Sort</option>
+                        <option value="9">Reverse Sort</option>
+
+                    </select>
+                </div>
+                <br>
+                <div class="col-12">
+                    <span><strong>Output</strong></span>
+                    <span id="opt"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        //function to calculate standard deviation
+        function std_val(value) {
+            var n = value.length
+            var mean = value.reduce((a, b) => a + b) / n
+            return Math.sqrt(value.map(x => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / n)
+        }
+        //function to calculate median
+        function cal_median(arr) {
+            if (arr.length === 0) return 0;
+
+            arr.sort(function (a, b) {
+                return a - b;
+            });
+
+            var sudo = Math.floor(arr.length / 2);
+
+            if (arr.length % 2)
+                return arr[sudo];
+
+            return (arr[sudo - 1] + arr[sudo]) / 2.0;
+        }
+        //adding event on select html tag
+        document.getElementById("sel").addEventListener("change", function () {
+            var optionselected = document.getElementById("sel").value;
+            var numbers = document.getElementById('numbers').value;
+            var arr = numbers.split(',');
+            var flag = true;
+            for (var i = 0; i < arr.length; i++) { arr[i] = +arr[i]; }
+            // console.log(arr);
+            //checking if number are integers or not
+            for (let i = 0; i < arr.length; i++) {
+                if (Number.isInteger(arr[i]) == false) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag == false) {
+                document.getElementById('errmsg').innerHTML = "Please Enter only Integer Value"
+            } else {
+                //if number are integers then several operations were computed
+                var opt = document.getElementById('opt');
+                //option 1 to find minimum element from array
+                if (optionselected == 1) {
+                    var minval = Math.min(...arr);
+                    var tag = document.createElement("p");
+                    var node = document.createTextNode("Minimum number : " + minval);
+                    tag.appendChild(node);
+                    opt.appendChild(tag)
+
+                }
+                //option 2 to find maximum element from array
+                else if (optionselected == 2) {
+                    var maxval = Math.max(...arr);
+                    var tag = document.createElement("p");
+                    var node = document.createTextNode("Maximum number : " + maxval);
+                    tag.appendChild(node);
+                    opt.appendChild(tag)
+
+                }
+                //option 3 to find product of all element from array
+                else if (optionselected == 3) {
+                    var ans = 1;
+                    for (var i = 0; i < arr.length; i++) { ans *= arr[i]; }
+                    var tag = document.createElement("p");
+                    var node = document.createTextNode("Product of Number : " + ans);
+                    tag.appendChild(node);
+                    opt.appendChild(tag)
+                }
+                //option 4 to find sum of all element from array
+                else if (optionselected == 4) {
+                    var ans = 0;
+                    for (var i = 0; i < arr.length; i++) { ans += arr[i]; }
+                    var tag = document.createElement("p");
+                    var node = document.createTextNode("Sum of Number : " + ans);
+                    tag.appendChild(node);
+                    opt.appendChild(tag)
+                }
+                //option 5 to find average of all element from array
+                else if (optionselected == 5) {
+                    var ans = 0;
+                    for (var i = 0; i < arr.length; i++) { ans += arr[i]; }
+                    var tag = document.createElement("p");
+                    var node = document.createTextNode("Average of Number : " + ans / arr.length);
+                    tag.appendChild(node);
+                    opt.appendChild(tag)
+                }
+                //option 6 to find Standard Deviation of all element from array
+                else if (optionselected == 6) {
+                    var ans = std_val(arr);
+                    var tag = document.createElement("p");
+                    var node = document.createTextNode("Standard Deviation of Number : " + ans);
+                    tag.appendChild(node);
+                    opt.appendChild(tag)
+                }
+                //option 7 to find median of all element from array
+                else if (optionselected == 7) {
+                    var ans = cal_median(arr);
+                    var tag = document.createElement("p");
+                    var node = document.createTextNode("Median of Number : " + ans);
+                    tag.appendChild(node);
+                    opt.appendChild(tag)
+                }
+                //option 8 to print sorted array
+                else if (optionselected == 8) {
+                    var ans = arr.sort(function (a, b) {
+                        return a - b;
+                    });
+                    var tag = document.createElement("p");
+                    var node = document.createTextNode("Sorted Array : " + ans);
+                    tag.appendChild(node);
+                    opt.appendChild(tag)
+                }
+                //option 8 to print reverse sorted array 
+                else if (optionselected == 9) {
+                    var ans = arr.sort(function (a, b) {
+                        return b - a;
+                    });
+                    var tag = document.createElement("p");
+                    var node = document.createTextNode("Reverse Sortedarray : " + ans);
+                    tag.appendChild(node);
+                    opt.appendChild(tag)
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
