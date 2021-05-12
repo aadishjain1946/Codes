@@ -1,43 +1,23 @@
 #include <iostream>
-#include <cstring>
-#include <cctype>
+#include <fstream>
 using namespace std;
-//function to compare two stirng and
-//return result regardless of case of string
-int stricmp(const char *s1, const char *s2)
+int main(int argc, char *argv[])
 {
-    int n = strlen(s1);
-    int m = strlen(s2);
-    if (n > m)
+    for (int i = 1; i < argc; i++)
     {
-        return 1;
-    }
-    else if (n < m)
-    {
-        return -1;
-    }
-    else
-    {
-        for (int i = 0; i < n; i++)
+        string data;
+        //creating file object
+        ifstream fileObject;
+        //opening the file, name given as command line argument
+        fileObject.open(argv[i]);
+        cout << "\n"
+             << i << ") Printing data of file " << argv[i] << '\n';
+        //reading file data
+        while (fileObject && !fileObject.eof())
         {
-            if ((char)tolower(s1[i]) > (char)tolower(s2[i]))
-            {
-                return 1;
-            }
-            else if ((char)tolower(s1[i]) < (char)tolower(s2[i]))
-            {
-                return -1;
-            }
+            getline(fileObject, data);
+            cout << data << endl;
         }
+        fileObject.close();
     }
-    return 0;
-}
-int main()
-{
-    char s1[100], s2[100];
-    cout << "Enter string 1: ";
-    cin >> s1;
-    cout << "Enter string 2: ";
-    cin >> s2;
-    cout << "Output: " << stricmp(s1, s2);
 }
