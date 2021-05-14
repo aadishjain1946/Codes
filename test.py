@@ -1,5 +1,5 @@
 # Taking input from user
-print("INPUT:")
+print("Sample Input:")
 N, updt = (int(i) for i in input().split(" "))
 updateInp = [[int(i) for i in input().split(" ")] for k in range(updt)]
 # initializing s0
@@ -26,5 +26,5 @@ for i in range(updt):
     if s0 > outputString:
         outputString = s0
 # printing output
-print("OUTPUT:")
+print("Sample Output:")
 print(outputString)
