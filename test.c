@@ -1,128 +1,91 @@
 #include <stdio.h>
 #include <stdlib.h>
-//struct store linked list node
-struct Node
+//function to check if given row indexes are valid or not
+int check(int n, int m, int i, int j)
 {
-    int number;
-    struct Node *next;
-};
-typedef struct Node node;
-node *head, *newNode;
-//function to add element in the linked list
-void addElement()
-{
-    int element = 0;
-    scanf("%d", &element);
-    while (element != -1)
-    {
-        newNode = (node *)malloc(1 * sizeof(node));
-        newNode->number = element;
-        newNode->next = NULL;
-        if (head != NULL && element % 2 == 0)
-        {
-            node *tail = head;
-            while (tail->next != NULL)
-            {
-                tail = tail->next;
-            }
-            tail->next = newNode;
-        }
-        else
-        {
-            newNode->next = head;
-            head = newNode;
-        }
-        scanf("%d", &element);
-    }
-}
-//function to cut last element of linked list and
-//add it to the beginning of the list
-node *cutlastaddhead(node *head)
-{
-    node *tail = head, *prev = NULL;
-    while (tail->next != NULL)
-    {
-        prev = tail;
-        tail = tail->next;
-    }
-    prev->next = NULL;
-    tail->next = head;
-    head = tail;
-    return head;
-}
-//function to delete middle element of linked list
-node *deleteMiddle(node *head)
-{
-    node *slow = head, *fast = head->next, *prev = NULL;
-    while (fast != NULL && fast->next != NULL)
-    {
-        prev = slow;
-        slow = slow->next;
-        fast = fast->next->next;
-    }
-    if (!prev)
-        return head;
-    prev->next = slow->next;
-    return head;
-}
-//function to swap first and last element of linked list
-node *changeFirstAndLast(node *head)
-{
-    node *tail = head, *prev = NULL;
-    while (tail->next != NULL)
-    {
-        prev = tail;
-        tail = tail->next;
-    }
-    prev->next = head;
-    tail->next = head->next;
-    head->next = NULL;
-    return tail;
-}
-//function to cut first element of linked list and
-//add it to the end of the list
-node *cutheadaddlast(node *head)
-{
-    node *tail = head;
-    while (tail->next != NULL)
-    {
-        tail = tail->next;
-    }
-    tail->next = head;
-    node *headNxt = head->next;
-    head->next = NULL;
-    head = headNxt;
-    return head;
-}
-//function to print linked list
-void printLL(node *head)
-{
-    node *tail = head;
-    while (tail != NULL)
-    {
-        printf("%d ", tail->number);
-        tail = tail->next;
-    }
-    printf("\n");
+    return i >= 0 && j >= 0 && i < n && j < m;
 }
 int main()
 {
-    head = NULL;
-    printf("Input:\n");
-    addElement();
-    printf("Output:\n");
-    printf("Linked List: ");
-    printLL(head);
-    head = cutlastaddhead(head);
-    printf("Linked List after cutlastaddhead: ");
-    printLL(head);
-    head = deleteMiddle(head);
-    printf("Linked List after deleteMiddle: ");
-    printLL(head);
-    head = changeFirstAndLast(head);
-    printf("Linked List after changeFirstAndLast: ");
-    printLL(head);
-    head = cutheadaddlast(head);
-    printf("Linked List after cutheadaddlast: ");
-    printLL(head);
+    FILE *filePointer;
+    char c;
+    //creating file object
+    filePointer = fopen("data.txt", "r");
+    if (filePointer == NULL)
+    {
+        printf("Cannot open file \n");
+        exit(0);
+    }
+    char sudo[100];
+    int k = 0, l = 0, m = 0;
+    double dataArray[7][4];
+    //reading data file from file object
+    c = fgetc(filePointer);
+    while (c != EOF)
+    {
+        //storing data into 2d array
+        if (c == ' ' || c == '\n')
+        {
+            sudo[k] = '\0';
+            double temp = atof(&sudo[0]);
+            dataArray[m][l % 4] = temp;
+            l++;
+            if (l % 4 == 0 && l != 0)
+                m++;
+            k = 0;
+        }
+        sudo[k] = c;
+        k++;
+        c = fgetc(filePointer);
+    }
+    fclose(filePointer);
+
+    sudo[k] = '\0';
+    double temp = atof(&sudo[0]);
+    dataArray[m][l % 4] = temp;
+    //printing data in 2d array
+    printf("The content of the array is:\n");
+    for (int i = 0; i < 7; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            printf("%f ", dataArray[i][j]);
+        }
+        printf("\n");
+    }
+    //reading row indexes from user
+    int index1, index2;
+    printf("Enter two row indexes to swap: ");
+    scanf("%d", &index1);
+    scanf("%d", &index2);
+    while (check(7, 7, index1, index2) == 0)
+    {
+        printf("Enter two row indexes to swap: ");
+        scanf("%d", &index1);
+        scanf("%d", &index2);
+    }
+    //swaping two rows using temporary array
+    double tempArr[4];
+    for (int i = 0; i < 4; i++)
+    {
+        tempArr[i] = dataArray[index1][i];
+    }
+    for (int i = 0; i < 4; i++)
+    {
+        dataArray[index1][i] = dataArray[index2][i];
+    }
+    for (int i = 0; i < 4; i++)
+    {
+        dataArray[index2][i] = tempArr[i];
+    }
+    printf("The content of the array AFTER the swap operations:\n");
+    for (int i = 0; i < 7; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            printf("%f ", dataArray[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
 }
