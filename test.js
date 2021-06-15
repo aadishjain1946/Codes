@@ -1,12 +1,16 @@
-//using queryString module to parse the given address
-const querystring = require('querystring');
-
-//Given Address
-const url = "http://localhost:8080/?year=2017&month=July";
-//splitting string using query parser module
-var splitString = querystring.parse(url)
-//printing output
-process.stdout.write("Output: ")
-for (let i in splitString) {
-    process.stdout.write(splitString[i] + " ");
-}
+process.stdin.resume();
+process.stdin.setEncoding('utf-8');
+var arr = "";
+process.stdin.on('data', function(chunk) {
+  arr += chunk;
+});
+process.stdin.on('end', function() {
+  arr = arr.split("\n");
+  var n = parseInt(arr.shift()); // in order ot get no of test cases
+  for(let i=0;i<n;i++){ //loop through no of test cases.
+      var a=parseInt(arr[i].split(" ")[0]); //get first no
+      var b=parseInt(arr[i].split(" ")[1]);// get second no
+     console.log(a+b) //output the result
+  }
+    
+});
