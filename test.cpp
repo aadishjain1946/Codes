@@ -1,26 +1,59 @@
 #include <iostream>
+#define MAX 9999
+#define MIN -9999
+#define ROW 100
+#define COL 500
 using namespace std;
-const int DISTRICTS = 4;
-const int MONTHS = 3;
+//function to print array
+void printArray(int *arr, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+}
 int main()
 {
-    int d, m;
-    double sales[DISTRICTS][MONTHS];
-    cout << "Input Array Values: \n";
-    for (d = 0; d < DISTRICTS; d++)
+    //declaring array of give dimensions
+    int array[ROW][COL];
+    //storing random numbers in the above array
+    for (int i = 0; i < ROW; i++)
     {
-        for (m = 0; m < MONTHS; m++)
+        for (int j = 0; j < COL; j++)
         {
-            cin >> sales[d][m];
+            array[i][j] = (MIN + rand() % (MAX - MIN + 1));
         }
     }
-    cout << "Sales Array: \n";
-    for (d = 0; d < DISTRICTS; d++)
+    //declaring positive, negative, and zeros array to store respective numbers
+    int positive[COL * ROW], negative[COL * ROW], zeros[COL * ROW];
+    int p = 0, n = 0, z = 0;
+    //processing each element one by one
+    for (int i = 0; i < ROW; i++)
     {
-        for (m = 0; m < MONTHS; m++)
+        for (int j = 0; j < COL; j++)
         {
-            cout << sales[d][m] << " ";
+            if (array[i][j] > 0)
+            {
+                positive[p] = array[i][j];
+                p++;
+            }
+            else if (array[i][j] < 0)
+            {
+                negative[n] = array[i][j];
+                n++;
+            }
+            else
+            {
+                zeros[z] = array[i][j];
+                z++;
+            }
         }
-        cout << "\n";
     }
+    //printing all the arrays
+    cout << "\nPrinting positive array: ";
+    printArray(positive, p);
+    cout << "\n\nPrinting negative array: ";
+    printArray(negative, n);
+    cout << "\n\nPrinting zeros array: ";
+    printArray(zeros, z);
 }
