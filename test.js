@@ -1,16 +1,38 @@
-process.stdin.resume();
-process.stdin.setEncoding('utf-8');
-var arr = "";
-process.stdin.on('data', function(chunk) {
-  arr += chunk;
-});
-process.stdin.on('end', function() {
-  arr = arr.split("\n");
-  var n = parseInt(arr.shift()); // in order ot get no of test cases
-  for(let i=0;i<n;i++){ //loop through no of test cases.
-      var a=parseInt(arr[i].split(" ")[0]); //get first no
-      var b=parseInt(arr[i].split(" ")[1]);// get second no
-     console.log(a+b) //output the result
-  }
-    
-});
+`
+ANSWER 4:
+
+  SELECT
+      PatientName 'Name',
+      (SELECT COUNT(*) FROM Appointments ap1  WHERE p.PatientID = app.PatientID) 'Count'
+  FROM
+      Patients p  
+  ORDER BY p.PatientName;
+
+ANSWER 5:
+
+  SELECT
+      SUM(tr.Price)
+  FROM
+      Dentist dt
+  JOIN
+      Appointments att
+  ON (dt.DentistID = att.DentistID)
+  JOIN
+      Treatments tr
+  ON (tr.TreatID = att.TreatmentID)
+  WHERE
+    dt.DentistName = "david";
+
+ANSWER 6:
+
+  SELECT
+      MIN(tr.Price)
+  FROM
+      Treatments tr;
+
+ANSWER 7:
+
+  INSERT INTO
+      Appointments (AppointmentID, PatientID, AppointmentTime, AppointmentDate, TreatmentID, DentistID)
+  VALUES (7, "P5", "8:00", "6/12/2021", "T2", "D4");
+`

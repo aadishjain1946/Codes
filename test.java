@@ -2,51 +2,98 @@ import java.util.*;
 
 public class test {
 
-  //product class to store product data
-  public static class product {
+  //node class to store node in a linked list
+  static class Node {
 
-    public String productName;
-    public int price;
+    public String data;
+    public Node next;
 
-    //constructor to initialize product object
-    product(String productName, int price) {
-      this.productName = productName;
-      this.price = price;
+    Node(String data) {
+      this.data = data;
+      this.next = null;
     }
 
-    //function to return name of product
-    String getProductName() {
-      return this.productName;
-    }
-
-    //function to return price of product after calculating total price
-    double getProductPrice() {
-      double ans = this.price;
-      if (ans > 10000) {
-        ans -= ans * 0.05;
-      }
-      double vat = ans * 0.14;
-      return ans + vat;
+    public void display() {
+      System.out.print(this.data + " ");
     }
   }
 
-  public static void main(String args[]) {
-    Scanner scnObj = new Scanner(System.in);
-    //prompt user to enter product name and product price
-    System.out.println("INPUT");
-    System.out.print("Enter Product Name: ");
-    String name = scnObj.nextLine();
-    System.out.print("Enter Product Price: ");
-    int price = scnObj.nextInt();
+  //linked list class to perform different operations on linked list
+  static class orderedList {
 
-    //creating new product object
-    product prd1 = new product(name, price);
-    
-    //printing output to screen
-    System.out.println("\nOUTPUT");
-    System.out.println("Product Name: " + prd1.getProductName());
-    System.out.println(
-      "Product Price including VAT: " + prd1.getProductPrice()
-    );
+    private Node head;
+
+    orderedList() {
+      head = null;
+    }
+
+    //function to insert data in linked list
+    public void insert(String data) {
+      Node newLLNode = new Node(data);
+      Node curr = head;
+      Node prev = null;
+      while (curr != null && data.compareTo(curr.data) > 0) {
+        prev = curr;
+        curr = curr.next;
+      }
+      if (prev == null) {
+        head = newLLNode;
+      } else {
+        prev.next = newLLNode;
+      }
+      newLLNode.next = curr;
+    }
+
+    //function to remove node from the linked list
+    public Node remove() {
+      if (head == null) {
+        System.out.println("Empty List!!");
+      }
+      Node sudo = head;
+      head = head.next;
+      return sudo;
+    }
+
+    //function to search for element in linked list
+    public Node search(String data) {
+      if (head == null) {
+        System.out.println("Empty List!!");
+      }
+      Node sudo = head;
+      while (sudo != null) {
+        if (sudo.data == data) {
+          return sudo;
+        }
+        sudo = sudo.next;
+      }
+      return null;
+    }
+
+    //function to print linked list
+    public void displayLL() {
+      Node sudo = head;
+      while (sudo != null) {
+        sudo.display();
+        sudo = sudo.next;
+      }
+      System.out.println("");
+    }
+  }
+
+  public static void main(String[] args) {
+    orderedList mylist = new orderedList();
+    mylist.insert("lmno");
+    mylist.insert("defg");
+    mylist.insert("abcd");
+    mylist.insert("hijk");
+    System.out.print("Printing Linked List after inserting 4 nodes: ");
+    mylist.displayLL();
+    System.out.println("Searching for node with data 'defg' in Linked List");
+    Node s1 = mylist.search("defg");
+    if (s1 != null) {
+      System.out.println("Found 'defg' in Linked List");
+    } else {
+      System.out.println("Not Found 'defg' in Linked List");
+    }
   }
 }
