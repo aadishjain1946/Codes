@@ -1,29 +1,36 @@
-int main(void)
+#include <stdio.h>
+int main()
 {
-
-    // Local Declarations
-    /**
-     * initially a int;
-     * Variable type should be before variable name
-     */
-    int a;
-    /**
-     * initially b :c :d char;
-     * Variable type should be before variable name
-     * and multiple variable should be saperated by commas(,)
-     */
-    char b, c, d;
-    /**
-     * initially d, e, f double float;
-     * Variable type should be before variable name
-     * and there can be single variable type for variables declared
-     */
-    double d, e, f;
-
-    // Statements
-
-    printf("The end of the program.");
-
-    return 0;
-
-} // main
+    //prompt user to enter basic salary
+    float basic, tax = 0, spf = 0, gi = 0;
+    printf("Enter basic salary: ");
+    scanf("%f", &basic);
+    //calculating tax, staff provident fund, global insurance
+    if (basic >= 0 && basic < 2000)
+    {
+        tax = 0;
+        spf = basic * 0.11;
+        gi = basic * 0.01;
+    }
+    else if (basic >= 2000 && basic < 3000)
+    {
+        tax = basic * 0.05;
+        spf = basic * 0.12;
+        gi = basic * 0.02;
+    }
+    else if (basic >= 3000 && basic < 4000)
+    {
+        tax = basic * 0.08;
+        spf = basic * 0.13;
+        gi = basic * 0.05;
+    }
+    else
+    {
+        tax = basic * 0.10;
+        spf = basic * 0.17;
+        gi = basic * 0.08;
+    }
+    //calculating net salary
+    float total = basic - tax - spf - gi;
+    printf("Net salary of employee is %f\n", total);
+}
