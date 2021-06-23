@@ -1,36 +1,48 @@
 #include <stdio.h>
 int main()
 {
-    //prompt user to enter basic salary
-    float basic, tax = 0, spf = 0, gi = 0;
-    printf("Enter basic salary: ");
-    scanf("%f", &basic);
-    //calculating tax, staff provident fund, global insurance
-    if (basic >= 0 && basic < 2000)
+    //prompt user to enter input
+    int n;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    int arr[n];
+    printf("Enter elements of array: ");
+    for (int i = 0; i < n; i++)
     {
-        tax = 0;
-        spf = basic * 0.11;
-        gi = basic * 0.01;
+        scanf("%d", &arr[i]);
     }
-    else if (basic >= 2000 && basic < 3000)
+    //checking if given input has alternative positive and negative numbers
+    int prev = -1, curr = 0;
+    if (arr[0] > 0)
+        curr = 1;
+    else
+        curr = 0;
+    int flag = 1;
+    for (int i = 1; i < n; i++)
     {
-        tax = basic * 0.05;
-        spf = basic * 0.12;
-        gi = basic * 0.02;
+        if (prev == curr)
+        {
+            flag = 0;
+            break;
+        }
+        if (arr[i] > 0)
+        {
+            prev = curr;
+            curr = 1;
+        }
+        else
+        {
+            prev = curr;
+            curr = 0;
+        }
     }
-    else if (basic >= 3000 && basic < 4000)
+    //printing output
+    if (flag == 1)
     {
-        tax = basic * 0.08;
-        spf = basic * 0.13;
-        gi = basic * 0.05;
+        printf("Output: true");
     }
     else
     {
-        tax = basic * 0.10;
-        spf = basic * 0.17;
-        gi = basic * 0.08;
+        printf("Output: false");
     }
-    //calculating net salary
-    float total = basic - tax - spf - gi;
-    printf("Net salary of employee is %f\n", total);
 }
