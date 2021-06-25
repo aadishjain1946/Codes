@@ -1,54 +1,42 @@
-import java.util.*;
+// import java.util.*;
 
-public class test {
+// public class test {
 
-  static boolean Prime(int num) {
-    boolean checkPrime = true;
-    for (int i = 2; i <= num / 2; i++) {
-      if (num % i == 0) {
-        checkPrime = false;
-        break;
-      }
-    }
-    return checkPrime;
+//   public static void main(String[] args) {
+//     //initializing sum to 0
+//     int sum = 0;
+//     //loop from integers 10 to 100
+//     for (int i = 10; i <= 100; i++) {
+//       //checking if number is divisible by 3 or 5
+//       if (i % 3 == 0 || i % 5 == 0) {
+//         sum += i;
+//       }
+//     }
+//     //printing output
+//     System.out.println(
+//       "Sum of numbers divisible by 3 or 5 between 10 to 100 is " + sum
+//     );
+//   }
+// }
+
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class httpServletClass extends HttpServlet {
+
+  private String data;
+
+  public void init() throws ServletException {
+    data = "This is a test program.";
   }
 
-  static int getGcd(int num1, int num2) {
-    if (num1 == 0) {
-      return num2;
-    }
-    if (num2 == 0) {
-      return num1;
-    }
-    if (num1 == num2) {
-      return num1;
-    }
-    if (num1 > num2) {
-      return getGcd(num1 - num2, num2);
-    }
-    return getGcd(num1, num2 - num1);
+  public void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+    response.setContentType("text/html");
+    PrintWriter outputObj = response.getWriter();
+    outputObj.println("<h1>" + data + "</h1>");
   }
 
-  public static void main(String[] args) {
-    ArrayList<Integer> arr = new ArrayList<Integer>();
-    ArrayList<Integer> gcd1 = new ArrayList<Integer>();
-    ArrayList<Integer> gcdn1 = new ArrayList<Integer>();
-    Scanner scn = new Scanner(System.in);
-    System.out.print("Enter value of n: ");
-    int n = scn.nextInt();
-    System.out.print("Enter array elements: ");
-    for (int i = 0; i < n; i++) {
-      int a = scn.nextInt();
-      arr.add(a);
-    }
-    for (int i = 0; i < n; i++) {
-      if (Prime(arr.get(i)) == true) {
-        gcd1.add(arr.get(i));
-      } else {
-        gcdn1.add(arr.get(i));
-      }
-    }
-    System.out.println("Group one: " + gcd1);
-    System.out.println("Group two: " + gcdn1);
-  }
+  public void destroy() {}
 }
