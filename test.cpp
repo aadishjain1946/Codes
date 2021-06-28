@@ -1,65 +1,32 @@
 #include <iostream>
-#include <fstream>
 using namespace std;
 int main()
 {
-    string data;
-    ifstream fileObject;
-    fileObject.open("values.txt");
-    int *array;
-    cout << "Output:\n";
-    while (fileObject && !fileObject.eof())
+    int n = 50;
+    int X[n], Y[n];
+    cout << "INPUT: ";
+    //prompt user to enter 50 integers value
+    for (int i = 0; i < n; i++)
     {
-        // rad data from text file
-        getline(fileObject, data);
-        string sudo = "";
-        int k = 0;
-        int maxEle = -1;
-        for (int i = 0; i < data.length(); i++)
+        cin >> X[i];
+        Y[i] = 0;
+    }
+    //calculating Y[i] and printing X[i] and Y[i] in two column
+    cout << "OUTPUT\nX   Y\n";
+    for (int i = 0; i < n; i++)
+    {
+        if (X[i] == 100)
         {
-            if (data[i] == ';')
-            {
-                int n = stoi(sudo);
-                array = new int[n];
-                sudo = "";
-                continue;
-            }
-            else if (data[i] == ',')
-            {
-                int ele = stoi(sudo);
-                maxEle = max(maxEle, ele);
-                array[k] = ele;
-                k++;
-                sudo = "";
-                continue;
-            }
-            sudo += data[i];
+            Y[i] = X[i] * X[i];
         }
-        int ele = stoi(sudo);
-        maxEle = max(maxEle, ele);
-        array[k] = ele;
-        k++;
-        //processing array eleement based on max element in array
-        if (maxEle % 2 == 1)
+        else if (X[i] > 30 && X[i] < 50)
         {
-            for (int i = 0; i < k; i++)
-            {
-                array[i] = array[i] * array[i];
-            }
+            Y[i] = 2 * X[i];
         }
         else
         {
-            for (int i = 0; i < k; i++)
-            {
-                array[i] = maxEle * array[i];
-            }
+            Y[i] = 3 * X[i] - 100;
         }
-        cout << array[0];
-        for (int i = 1; i < k; i++)
-        {
-            cout << "," << array[i];
-        }
-        cout << '\n';
+        cout << X[i] << "  " << Y[i] << '\n';
     }
-    fileObject.close();
 }

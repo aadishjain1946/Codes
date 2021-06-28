@@ -1,42 +1,77 @@
-// import java.util.*;
+import java.util.*;
 
-// public class test {
+public class test {
 
-//   public static void main(String[] args) {
-//     //initializing sum to 0
-//     int sum = 0;
-//     //loop from integers 10 to 100
-//     for (int i = 10; i <= 100; i++) {
-//       //checking if number is divisible by 3 or 5
-//       if (i % 3 == 0 || i % 5 == 0) {
-//         sum += i;
-//       }
-//     }
-//     //printing output
-//     System.out.println(
-//       "Sum of numbers divisible by 3 or 5 between 10 to 100 is " + sum
-//     );
-//   }
-// }
+  //linked list node class to store linked list data
+  public static class ListNode {
 
-import java.io.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
+    int data;
+    ListNode next;
 
-public class httpServletClass extends HttpServlet {
-
-  private String data;
-
-  public void init() throws ServletException {
-    data = "This is a test program.";
+    ListNode(int data) {
+      this.data = data;
+    }
   }
 
-  public void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-    response.setContentType("text/html");
-    PrintWriter outputObj = response.getWriter();
-    outputObj.println("<h1>" + data + "</h1>");
+  public static class sort {
+
+    //method to sort linked list using insertion sort
+    public ListNode insertLSort(ListNode head) {
+      ListNode temp = null;
+      ListNode curr = head;
+      while (curr != null) {
+        ListNode next = curr.next;
+        if (temp == null || temp.data >= curr.data) {
+          curr.next = temp;
+          temp = curr;
+        } else {
+          ListNode sudo = temp;
+          while (sudo.next != null && sudo.next.data < curr.data) {
+            sudo = sudo.next;
+          }
+          curr.next = sudo.next;
+          sudo.next = curr;
+        }
+        curr = next;
+      }
+      head = temp;
+      return head;
+    }
   }
 
-  public void destroy() {}
+  //method to print linked list
+  public static void print(ListNode head) {
+    ListNode temp = head;
+    while (temp != null) {
+      System.out.print(temp.data + " ");
+      temp = temp.next;
+    }
+  }
+
+  public static void main(String[] args) {
+    ListNode d1 = new ListNode(30);
+    ListNode d2 = new ListNode(50);
+    ListNode d3 = new ListNode(10);
+    ListNode d4 = new ListNode(20);
+    ListNode d5 = new ListNode(40);
+    d1.next = d2;
+    d2.next = d3;
+    d3.next = d4;
+    d4.next = d5;
+
+    sort s1 = new sort();
+    System.out.print("Linked list before sorting: ");
+    print(d1);
+    System.out.println("");
+    d1 = s1.insertLSort(d1);
+    System.out.print("Linked list after sorting: ");
+    print(d1);
+  }
 }
+
+
+
+
+public static void doSomething(int x){}
+
+doSomething(25);
