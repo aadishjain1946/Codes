@@ -2,32 +2,37 @@ import java.util.*;
 
 public class test {
 
-  public static void main(String[] args) {
-    Scanner scnObj = new Scanner(System.in);
-    // prompt user to enter full name
-    System.out.print("Enter Full Name: ");
-    String name = scnObj.nextLine();
-    //split the name around string
-    String[] nameSplit = name.split(" ");
+  // test circle class to store circle information
+  public static class TestCircle {
 
-    String userName = "";
-    userName += nameSplit[0].charAt(0);
-    // check if name has middle name or not
-    if (nameSplit.length > 2) {
-      userName += nameSplit[1].charAt(0);
-      if (nameSplit[2].length() >= 6) {
-        userName += nameSplit[2].substring(0, 6);
-      } else {
-        System.out.println("Cannot create userName!!");
-      }
-    } else {
-      if (nameSplit[1].length() >= 7) {
-        userName += nameSplit[1].substring(0, 7);
-      } else {
-        System.out.println("Cannot create userName!!");
-      }
+    private double radius;
+
+    //constructor to initialize object
+    public TestCircle() {
+      this.radius = 0;
     }
-    //print output
-    System.out.println("Your username is: " + userName.toLowerCase());
+
+    //setter function to set radius of a circle
+    public void setRadius(double radius) {
+      this.radius = radius;
+    }
+
+    //getter function to get radius of a circle
+    public double getRadius() {
+      return this.radius;
+    }
+  }
+
+  public static void main(String[] args) {
+    //creating 3 circle object
+    TestCircle circle1 = new TestCircle();
+    circle1.setRadius(2.5);
+    TestCircle circle2 = new TestCircle();
+    circle2.setRadius(300);
+    TestCircle circle3 = new TestCircle();
+    //printing radius of circle object
+    System.out.println("Radius of circle1 is " + circle1.getRadius());
+    System.out.println("Radius of circle2 is " + circle2.getRadius());
+    System.out.println("Radius of circle3 is " + circle3.getRadius());
   }
 }
