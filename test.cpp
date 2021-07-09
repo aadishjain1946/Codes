@@ -1,30 +1,35 @@
 #include <iostream>
 using namespace std;
-// function to evaluate result for coin row problem
-int coin_row_dynamic_programming(int *array, int n)
+//bubble sort function to sort the given array using bubble sort algorithm
+void bubble_Sort(string arr[], int size)
 {
-    if (n == 1)
+    int i, j;
+    for (i = 0; i < size - 1; i++)
     {
-        return array[0];
+        for (j = 0; j < size - i - 1; j++)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                string sudo = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = sudo;
+            }
+        }
     }
-    if (n == 2)
-    {
-        return max(array[0], array[1]);
-    }
-
-    int F[n + 1], i;
-    F[0] = 0;
-    F[1] = array[0];
-
-    for (i = 2; i <= n + 1; i++)
-    {
-        F[i] = max(array[i - 1] + F[i - 2], F[i - 1]);
-    }
-    return F[n];
 }
 int main()
 {
-    int array[] = {5, 1, 2, 10, 6, 2};
-    int n = 6;
-    cout << "Output: " << coin_row_dynamic_programming(array, n) << '\n';
+    string arr[] = {"QR", "XH", "ÇW", "ÖS", "ÖJ", "ŞA", "ÜĞ", "QT", "ÇQ"};
+    int n = sizeof(arr) / sizeof(int);
+    cout << "Input: ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    bubble_Sort(arr, n);
+    cout << "\nOutput: ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
 }

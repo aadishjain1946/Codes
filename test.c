@@ -1,38 +1,19 @@
 #include <stdio.h>
-#include <string.h>
-// function to return start index of string 1 that matches string 2
-int strFindSimilar(char str1[], char str2[])
-{
-    if (strlen(str1) < strlen(str2))
-    {
-        return -1;
-    }
-    int start = -1, commonEle = -1;
-    //checking for each characters if str2 is similar to str1
-    //and updating the count
-    for (int i = 0; i < strlen(str1) - strlen(str2) + 1; i++)
-    {
-        int sudo = 0, k = 0;
-        for (int j = i; j < strlen(str1) && k < strlen(str2); j++, k++)
-        {
-            if (str1[j] == str2[k])
-            {
-                sudo++;
-            }
-        }
-        if (sudo > (strlen(str2) / 2) && sudo > commonEle)
-        {
-            start = i;
-            commonEle = sudo;
-        }
-    }
-    return start;
-}
+#include <math.h>
+#include <stdlib.h>
 int main()
 {
-    char str1[] = "FifthOfNovember";
-    // char str1[] = "Seventh";
-    char str2[] = "September";
-    printf("INPUT:\n %d \n %d \n", str1, str2);
-    printf("Output: %d", strFindSimilar(str1, str2));
+    // creating file object
+    FILE *out = fopen("data.txt", "w");
+    //storing square root from 1 - 100 in the text file
+    for (int i = 0; i < 100; i++)
+    {
+        float n = sqrt(i);
+        char array[10];
+        sprintf(array, "%f", n);
+        fputs(array, out);
+        fputs("\n", out);
+    }
+    //closing text file
+    fclose(out);
 }
