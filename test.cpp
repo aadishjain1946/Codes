@@ -1,35 +1,79 @@
 #include <iostream>
+#include <vector>
 using namespace std;
-//bubble sort function to sort the given array using bubble sort algorithm
-void bubble_Sort(string arr[], int size)
-{
-    int i, j;
-    for (i = 0; i < size - 1; i++)
-    {
-        for (j = 0; j < size - i - 1; j++)
-        {
-            if (arr[j] > arr[j + 1])
-            {
-                string sudo = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = sudo;
-            }
-        }
-    }
-}
 int main()
 {
-    string arr[] = {"QR", "XH", "ÇW", "ÖS", "ÖJ", "ŞA", "ÜĞ", "QT", "ÇQ"};
-    int n = sizeof(arr) / sizeof(int);
-    cout << "Input: ";
-    for (int i = 0; i < n; i++)
+    //creating and store choices in the two vectors
+    vector<string> v1, v2;
+    for (int i = 0; i < 4; i++)
     {
-        cout << arr[i] << " ";
+        string a = "v1-Choice #";
+        string c = "v2-Choice #";
+        char b = char(i) + '1';
+        a += b;
+        c += b;
+        v1.push_back(a);
+        v2.push_back(c);
     }
-    bubble_Sort(arr, n);
-    cout << "\nOutput: ";
-    for (int i = 0; i < n; i++)
+    int choice = 0;
+    while (choice != 3)
     {
-        cout << arr[i] << " ";
+        //prompt user to select a vector and display it
+        cout << "Select\n";
+        cout << "1. Vector - 1\n";
+        cout << "2. Vector - 2\n";
+        cout << "3. Exit\n";
+        cout << "Enter: ";
+        cin >> choice;
+        if (choice == 1)
+        {
+            vector<int> itemSelected;
+            int chs;
+            //prompt user to select 5 items
+            for (int k = 0; k < 5; k++)
+            {
+                cout << "\nMenu\n";
+                for (int i = 0; i < 4; i++)
+                {
+                    cout << i + 1 << " " << v1[i] << '\n';
+                }
+                cout << "Enter: ";
+                cin >> chs;
+                itemSelected.push_back(chs - 1);
+            }
+            //printing all items
+            cout << "\nSelected Items from Vector 1 are: ";
+            for (int i = 0; i < itemSelected.size(); i++)
+            {
+                cout << v1[itemSelected[i]] << " ";
+            }
+            cout << '\n';
+        }
+        else if (choice == 2)
+        {
+            vector<int> itemSelected;
+            int chs;
+            for (int k = 0; k < 5; k++)
+            {
+                cout << "\nMenu\n";
+                for (int i = 0; i < 4; i++)
+                {
+                    cout << i + 1 << " " << v2[i] << '\n';
+                }
+                cout << "Enter: ";
+                cin >> chs;
+                itemSelected.push_back(chs - 1);
+            }
+            cout << "\nSelected Items from Vector 2 are: ";
+            for (int i = 0; i < itemSelected.size(); i++)
+            {
+                cout << v2[itemSelected[i]] << ", ";
+            }
+            cout << '\n';
+        }
+        else
+        {
+            break;
+        }
     }
 }

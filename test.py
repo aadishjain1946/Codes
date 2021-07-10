@@ -1,36 +1,19 @@
+from random import randint
+
+
 def main():
-    # printing sequence a
-    i = 24
-    print("a) ", end=" ")
-    while i >= -6:
-        print(i, end=" ")
-        i -= 6
-
-    # printing sequence b
-    i = -10
-    print("\nb) ", end=" ")
-    while i <= 20:
-        print(i, end=" ")
-        i += 5
-
-    # printing sequence c
-    i = 18
-    print("\nc) ", end=" ")
-    while i <= 63:
-        print(i, end=" ")
-        i += 9
-
-    # printing sequence d
-    i = 18
-    j = 0
-    print("\nd) ", end=" ")
-    while i <= 63:
-        if j % 2 == 0:
-            print(i, end=" ")
-        else:
-            print(i*-1, end=" ")
-        i += 9
-        j += 1
+    # prompt user to enter number of randm number to generate
+    n = int(input("Enter count of random integers: "))
+    output = ""
+    # generating random integers
+    for i in range(n):
+        value = randint(1, 500)
+        output += str(value)
+        output += " "
+    # writing data to file
+    file = open("data.txt", "w")
+    file.write(output)
+    file.close()
 
 
 if __name__ == "__main__":
