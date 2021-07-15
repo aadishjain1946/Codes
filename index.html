@@ -1,10 +1,82 @@
-<p>This is a test notification with all attachments&nbsp;</p>
-<p>Name: shubham</p>
-<p><br></p>
-<p>Designation: </p>
-<p><br></p>
-<p>Static: </p>
-<p><br></p>
-<p>Dynamic In Body: <img width="50" height="60"
-        src="https://dc57tidvbpwnf.cloudfront.net/sandbox/FLS0000008/d2b723fe-765d-4e7f-8c67-c2dc5b1350b9?Expires=315569520000&Key-Pair-Id=APKAJONMV73GMYW5ILGQ&Signature=XnjwnkiXSBz4Ilo2O-I6oUQDwAhpDsTQBuOndi8BYCAl5tiq51d0OPsTruK0pbggJAVYBqi1-TnBPpGwQadNqNCF3MsXjTLFSyfZ~8zYYzK7RepRGuY1~iSDjGjrZ-9obIm5hT8SBm7x-3gfWI3fYzkRihbiDCXjOsUSqWLdQcPxkM96DwVFXNQl7IO9vjwJZ6dMyh1dvKDYP0CquhGQHxSFwV6opLkcI59Bx3g2YmQ5riWds2eCa5MQiYNco4qSiktIA~VM0NwCdkZ2GhTq8PILsBdXH5gKSV3HgwvXkKPSgJuzn1CXiZRVqNDg3~Ih6Q2cJK8IqoQBQH2~F0g7QQ__">
-</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <style>
+                h1 {
+                        color: red;
+                }
+        </style>
+</head>
+
+<body>
+        <form method="POST" action="/getData">">
+                <label for="name">Name:</label>
+                <input type="submit" value="Submit">
+        </form>
+
+        <div class="main">
+                <div class="head">
+                        <h1 style="color: red;">
+                                Personal Charity: Donation Form
+                        </h1>
+                </div>
+                <div class="content">
+                        <fieldset>
+                                <legend><strong>Personal Information Details</strong></legend>
+                                <table class="tbl-cnt">
+                                        <tr>
+                                                <td>Name <span style="color: red;">*</span></td>
+                                                <td><input type="text" placeholder="For Example: John Doe"></td>
+                                        </tr>
+                                        <tr>
+                                                <td>Phone <span style="color: red;">*</span></td>
+                                                <td><input type="phone" placeholder="For Example: 012-345-6798"></td>
+                                        </tr>
+                                        <tr>
+                                                <td>Email <span style="color: red;">*</span></td>
+                                                <td><input type="email" placeholder="For Example: user@domain.com"></td>
+                                        </tr>
+                                        <tr>
+                                                <td>Gender <span style="color: red;">*</span></td>
+                                                <td><select class="slct" id="">
+                                                                <option value="" hidden>Select an Option</option>
+                                                                <option value="1">Male</option>
+                                                                <option value="0">Female</option>
+                                                        </select></td>
+                                        </tr>
+                                </table>
+                        </fieldset>
+                </div>
+                <div class="content1">
+                        <fieldset>
+                                <legend><strong>Donation Details</strong></legend>
+                                <table class="tbl-cnt">
+                                        <tr>
+                                                <td>Amount <span style="color: red;">*</span></td>
+                                                <td><input type="text" placeholder="Any Amount between R1 - R1000"></td>
+                                        </tr>
+                                        <tr>
+                                                <td>Fund <span style="color: red;">*</span></td>
+                                                <td><select class="slct" id="">
+                                                                <option value="" hidden>Select an Option</option>
+                                                                <option value="1">1</option>
+                                                                <option value="0">2</option>
+                                                        </select></td>
+                                        </tr>
+                                </table>
+                        </fieldset>
+                </div>
+                <div>
+                        <button class="btn">Donate</button>
+                </div>
+        </div>
+
+</body>
+
+</html>

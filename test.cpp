@@ -1,79 +1,198 @@
-#include <iostream>
-#include <vector>
+
+#include <bits/stdc++.h>
+
 using namespace std;
-int main()
+//node class to create a node of doubly linked list
+class Node
 {
-    //creating and store choices in the two vectors
-    vector<string> v1, v2;
-    for (int i = 0; i < 4; i++)
+public:
+    int data;
+    Node *prev, *next;
+    Node()
     {
-        string a = "v1-Choice #";
-        string c = "v2-Choice #";
-        char b = char(i) + '1';
-        a += b;
-        c += b;
-        v1.push_back(a);
-        v2.push_back(c);
+        this->prev = this->next = NULL;
     }
-    int choice = 0;
-    while (choice != 3)
+    Node(int data)
     {
-        //prompt user to select a vector and display it
-        cout << "Select\n";
-        cout << "1. Vector - 1\n";
-        cout << "2. Vector - 2\n";
-        cout << "3. Exit\n";
-        cout << "Enter: ";
-        cin >> choice;
-        if (choice == 1)
-        {
-            vector<int> itemSelected;
-            int chs;
-            //prompt user to select 5 items
-            for (int k = 0; k < 5; k++)
-            {
-                cout << "\nMenu\n";
-                for (int i = 0; i < 4; i++)
-                {
-                    cout << i + 1 << " " << v1[i] << '\n';
-                }
-                cout << "Enter: ";
-                cin >> chs;
-                itemSelected.push_back(chs - 1);
-            }
-            //printing all items
-            cout << "\nSelected Items from Vector 1 are: ";
-            for (int i = 0; i < itemSelected.size(); i++)
-            {
-                cout << v1[itemSelected[i]] << " ";
-            }
-            cout << '\n';
-        }
-        else if (choice == 2)
-        {
-            vector<int> itemSelected;
-            int chs;
-            for (int k = 0; k < 5; k++)
-            {
-                cout << "\nMenu\n";
-                for (int i = 0; i < 4; i++)
-                {
-                    cout << i + 1 << " " << v2[i] << '\n';
-                }
-                cout << "Enter: ";
-                cin >> chs;
-                itemSelected.push_back(chs - 1);
-            }
-            cout << "\nSelected Items from Vector 2 are: ";
-            for (int i = 0; i < itemSelected.size(); i++)
-            {
-                cout << v2[itemSelected[i]] << ", ";
-            }
-            cout << '\n';
-        }
+        this->data = data;
+        this->prev = this->next = NULL;
+    }
+};
+//queue class to implement queue using doubly linked list
+class queueClass
+{
+    Node *front;
+    Node *rear;
+    int queueSize;
+
+public:
+    queueClass()
+    {
+        front = rear = NULL;
+        queueSize = 0;
+    }
+    //function to return size of queue
+    int getQueueSize()
+    {
+        return queueSize;
+    }
+    //function to insert element in a queue
+    void intertQueue(int data)
+    {
+        Node *curr = new Node(data);
+        if (curr == NULL)
+            cout << "Queue OverFlow\n";
         else
         {
-            break;
+            if (rear == NULL)
+                front = rear = curr;
+
+            else
+            {
+                curr->prev = rear;
+                rear->next = curr;
+                rear = curr;
+            }
+
+            queueSize++;
         }
     }
+    //function to delete element from queue
+    void deleteQueue()
+    {
+        if (getQueueSize() == 0)
+            cout << "Queue UnderFlow\n";
+
+        else
+        {
+            Node *temp = front;
+            front = front->next;
+
+            if (front == NULL)
+                rear = NULL;
+            else
+                front->prev = NULL;
+            free(temp);
+
+            queueSize--;
+        }
+    }
+    //function to print element in a queue
+    void printQueue()
+    {
+
+        struct Node *sudo = front;
+
+        cout << sudo->data << " ";
+        while (sudo->next != NULL)
+        {
+            cout << sudo->next->data << " ";
+            sudo = sudo->next;
+        }
+        cout << "\n";
+    }
+};
+//implementing stack class using doubly linked list
+class stackClass
+{
+public:
+    Node *top;
+    stackClass()
+    {
+        this->top = NULL;
+    }
+    //function to check if stack is empty or not
+    bool isStackempty()
+    {
+        return top->prev == NULL;
+    }
+    //function to insert element in a stack
+    void insertStack(int data)
+    {
+
+        struct Node *curr;
+        curr = new Node();
+
+        if (!curr)
+        {
+            cout << "Heap Overflow" << endl;
+        }
+
+        curr->prev = top;
+        curr->data = data;
+        curr->next = NULL;
+
+        top = curr;
+    }
+    //function to delete element from a tsack
+    void deleteStack()
+    {
+
+        if (isStackempty())
+        {
+            cout << "Stack Underflow";
+            exit(1);
+        }
+
+        struct Node *sudo;
+        sudo = new Node();
+
+        sudo->next = NULL;
+        sudo->data = top->prev->data;
+        sudo->prev = top->prev->prev;
+
+        free(top);
+        top = sudo;
+    }
+
+    void printStack()
+    {
+
+        struct Node *sudo = top;
+
+        cout << sudo->data << " ";
+        while (sudo->prev != NULL)
+        {
+            cout << sudo->prev->data << " ";
+            sudo = sudo->prev;
+        }
+        cout << "\n";
+    }
+};
+int main()
+{
+    cout << "Stack\n";
+    stackClass s1;
+    s1.insertStack(10);
+    s1.insertStack(20);
+    s1.insertStack(30);
+    s1.insertStack(40);
+    s1.insertStack(50);
+    cout << "Stack Element: ";
+    s1.printStack();
+    cout << "Deleting stack Element.\n";
+    s1.deleteStack();
+    cout << "Stack Element: ";
+    s1.printStack();
+    cout << "Deleting stack Element.\n";
+    s1.deleteStack();
+    cout << "Stack Element: ";
+    s1.printStack();
+    cout << "\nQueue\n";
+    queueClass q1;
+    q1.intertQueue(10);
+    q1.intertQueue(20);
+    q1.intertQueue(30);
+    q1.intertQueue(40);
+    q1.intertQueue(50);
+    cout << "Queue Element: ";
+    q1.printQueue();
+    cout << "Deleting Queue Element.\n";
+    q1.deleteQueue();
+    cout << "Queue Element: ";
+    q1.printQueue();
+    cout << "Deleting Queue Element.\n";
+    q1.deleteQueue();
+    cout << "Queue Element: ";
+    q1.printQueue();
 }
