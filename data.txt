@@ -1,4 +1,6 @@
-John 8 9 98 92
-Sam 9 10 80 70
-Ray 7 7 65 69
-Jason 6 8 90 95
+Jake vanilla
+Jane chocolate
+Jill vanilla
+Mary strawberry
+Janet chocolate
+Mika chocolate

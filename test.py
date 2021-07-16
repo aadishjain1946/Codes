@@ -1,22 +1,36 @@
-def printCrazyLetter(str1, str2, str3):
-    str1 = str1.upper()
-    print(str1, end="")
-    str2 = reversed(str2)
-    print(str2, end="")
-    for i in range(len(str3)):
-        print(str3[i], end=" ")
+# function to return most popular flavor from the given dictionary
+def most_popular_flavor(flav_dict):
+    cnt = 0
+    most_pop = ""
+    for i in flav_dict:
+        if flav_dict[i] > cnt:
+            cnt = flav_dict[i]
+            most_pop = i
+    return most_pop
+
+# function to create dictionary of flavors
+
+
+def create_flavor_dict(lines):
+    flav_dict = {}
+    for i in range(len(lines)):
+        sudo = lines[i].split(" ")
+        if sudo[1] in flav_dict:
+            flav_dict[sudo[1]] += 1
+        else:
+            flav_dict[sudo[1]] = 1
+    return flav_dict
 
 
 def main():
-    # prompt user to enter a string
-    inputStr = input("Enter a string: ")
-    # using inbuilt function to convert string to lower case
-    resultLowr = inputStr.lower()
-    # using inbuilt function to convert string to upper case
-    resultUppr = inputStr.upper()
-    # printing the output
-    print("String in UpperCase:", resultUppr)
-    print("String in LowerCase:", resultLowr)
+    file1 = open("data.txt", "r+")
+    str = (file1.read())
+    print("Input")
+    print(str)
+    str = str.split("\n")
+    flav_dict = create_flavor_dict(str)
+    most_pop = most_popular_flavor(flav_dict)
+    print("\nThe most popular flavor is:", most_pop)
 
 
 if __name__ == "__main__":
