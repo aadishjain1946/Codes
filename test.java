@@ -1,17 +1,17 @@
-import java.io.*;
 import java.util.*;
 
 public class test {
-
-  public static void main(String[] args) {
-    try{
-      int ans = 10;
-      if(ans >= 10){
-        throw new ArithmeticException();
+    public static int my_method(int n){
+      if(n==1){
+        return 4;
+      } else{
+        int ans = 2 + 3 * my_method(n-1);
+        System.out.println(ans);
+        return ans;
       }
-    }catch(ArithmeticException e){
-      System.out.print("Arithmetic Exception Thrown!!!");
-    }
-  }
 }
 
+  public static void main(String[] args) {
+    System.out.println(my_method(5));
+  }
+}
