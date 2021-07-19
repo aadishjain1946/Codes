@@ -2,43 +2,26 @@
 using namespace std;
 int main()
 {
-    //prompt usert to enter m & n
-    int m, n;
-    cout << "Enter value of m & n: ";
-    cin >> m >> n;
-    double arr[m][n];
-    //prompt usert to enter elements of array
-    cout << "Enter Array elements: \n";
-    for (int i = 0; i < m; i++)
+    //prompt user to enter integers
+    cout << "Odds and Evens\n";
+    int input = -1, even = 0, odd = 0;
+    while (input != 0)
     {
-        for (int j = 0; j < n; j++)
+        cout << "Enter an integer: ";
+        cin >> input;
+        if (input == 0)
         {
-            cin >> arr[i][j];
+            break;
+        }
+        //updating odd & even integers count
+        if (input % 2 == 0)
+        {
+            even++;
+        }
+        else
+        {
+            odd++;
         }
     }
-    //calculating output
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            if (arr[i][j] < 0.5)
-            {
-                arr[i][j] = 1;
-            }
-            else if (arr[i][j] >= 0.5)
-            {
-                arr[i][j] = 10;
-            }
-        }
-    }
-    //printing the output
-    cout << "Output: \n";
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            cout << arr[i][j] << " ";
-        }
-        cout << '\n';
-    }
+    cout << "You entered " << odd << " odds and " << even << " even.\n";
 }
