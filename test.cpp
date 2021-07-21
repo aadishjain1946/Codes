@@ -47,25 +47,43 @@ int binarySearch(vector<string> list, string searchItem)
     /*************************/
     /* Write your code here */
     /*************************/
-
+    int start = 0, end = list.size() - 1;
+    int mid;
+    while (start <= end)
+    {
+        mid = (start + end) / 2;
+        if (list[mid] == searchItem)
+        {
+            return mid;
+        }
+        else if (list[mid] > searchItem)
+        {
+            end = mid - 1;
+        }
+        else
+        {
+            start = mid + 1;
+        }
+    }
+    return -1;
 } //end binarySearch
 
 void selectionSort(vector<string> &list)
 {
-    int i, j, min_idx;
+    int temp_ind;
     int n = list.size();
-    for (i = 0; i < n - 1; i++)
+    for (int i = 0; i < n - 1; i++)
     {
-        min_idx = i;
-        for (j = i + 1; j < n; j++)
+        temp_ind = i;
+        for (int j = i + 1; j < n; j++)
         {
-            if (list[j] < list[min_idx])
+            if (list[j] < list[temp_ind])
             {
-                min_idx = j;
+                temp_ind = j;
             }
         }
-        string sudo = list[min_idx];
-        list[min_idx] = list[i];
+        string sudo = list[temp_ind];
+        list[temp_ind] = list[i];
         list[i] = sudo;
     }
 }
