@@ -1,22 +1,45 @@
-A = [[0 for j in range(2)] for i in range(1)]
-# prompt user to enter value of X,B,C
-X = int(input("Enter Scaler Value of X: "))
-print("Enter element of matrix(2X2) B:")
-B = [[int(j) for j in input().split(" ")] for i in range(2)]
-print("Enter element of matrix(2X1) C:")
-C = [[int(j) for j in input().split(" ")] for i in range(2)]
-# calculating product of vector B & C
-output = [[0 for x in range(1)] for y in range(2)]
-for i in range(len(B)):
-    for j in range(len(C[0])):
-        for k in range(len(C)):
-            output[i][j] += B[i][k] * C[k][j]
-# calculating values of vector A
-sum = 0
-for i in range(len(output)):
-    for j in range(len(output[0])):
-        sum += output[i][j]
-A[0][0] = X/sum
-A[0][1] = 1 - A[0][0]
 
-print("The element of vector A:", A)
+def gcd(a, b):
+    if (a == 0 or b == 0):
+        return False
+    if (a == b):
+        return a
+    if (a > b):
+        return gcd(a-b, b)
+
+    return gcd(a, b-a)
+
+
+def coprime(a, arr, start_i, start_j):
+    count = {}
+    for j in range(start_j+1, len(arr[0])):
+        print((a, arr[start_i][j]))
+        if ((gcd(a, arr[start_i][j]) == 1)):
+            count[(a, arr[start_i][j])] = 1
+
+    for i in range(start_i+1, len(arr)):
+        print((a, arr[i][len(arr[0])-1]))
+        if ((gcd(a, arr[i][len(arr[0])-1]) == 1)):
+            count[(a, arr[i][len(arr[0])-1])] = 1
+    return count
+
+
+def numOfPairs(arr):
+    count = {}
+    for i in range(len(arr)):
+        for j in range(len(arr[0])):
+            sudo = coprime(arr[i][j], arr, i, j)
+            count.update(sudo)
+
+    return len(count)
+
+
+n, m = (int(i) for i in input().split(" "))
+arr = []
+for i in range(1, n+1):
+    sudo = []
+    for j in range(1, m+1):
+        sudo.append(i+j)
+    arr.append(sudo)
+print(arr)
+print(numOfPairs(arr))
