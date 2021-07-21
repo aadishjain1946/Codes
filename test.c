@@ -1,90 +1,87 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <string.h>
-#include <sys/types.h>
-#include <unistd.h>
-
-int main()
+//declaring a structure for sequence ADT
+//that can store data and pointer to next node
+struct sequence
 {
+    int data;
+    struct sequence *next;
+};
 
-    int fd1[2];
-    int fd2[2];
-
-    char fixed_str[] = "forgeeks.org";
-    char input_str[100];
-    pid_t p;
-
-    if (pipe(fd1) == -1)
+int size = 1;
+//function to insert element at particular position in the sequence ADT
+void insert(struct sequence **Head, int index, int data)
+{
+    if (index < 1 || index > size + 1)
     {
-        fprintf(stderr, "Pipe Failed");
-        return 1;
+        printf("Invalid position!");
     }
-    if (pipe(fd2) == -1)
-    {
-        fprintf(stderr, "Pipe Failed");
-        return 1;
-    }
-
-    scanf("%s", input_str);
-    p = fork();
-
-    if (p < 0)
-    {
-        fprintf(stderr, "fork Failed");
-        return 1;
-    }
-
-
-    else if (p > 0)
-    {
-        char concat_str[100];
-
-        close(fd1[0]);
-
-    
-    
-        write(fd1[1], input_str, strlen(input_str) + 1);
-        close(fd1[1]);
-
-    
-        wait(NULL);
-
-        close(fd2[1]);
-
-    
-    
-        read(fd2[0], concat_str, 100);
-        printf("Concatenated string %s\n", concat_str);
-        close(fd2[0]);
-    }
-
-
     else
     {
-        close(fd1[1]);
+        while (index--)
+        {
+            Head = &(*Head)->next;
+        }
+        if (index < 0)
+        {
+            struct sequence *temp = (struct sequence *)malloc(sizeof(struct sequence));
+            temp->data = data;
+            temp->next = NULL;
 
-    
-        char concat_str[100];
-        read(fd1[0], concat_str, 100);
-
-    
-        int k = strlen(concat_str);
-        int i;
-        for (i = 0; i < strlen(fixed_str); i++)
-            concat_str[k++] = fixed_str[i];
-
-        concat_str[k] = '\0';
-
-    
-        close(fd1[0]);
-        close(fd2[0]);
-
-    
-        write(fd2[1], concat_str, strlen(concat_str) + 1);
-        close(fd2[1]);
-
-        exit(0);
+            temp->next = *Head;
+            *Head = temp;
+        }
+        size++;
     }
+}
+//function to print elements in the sequence ADT
+void print(struct sequence *head)
+{
+    struct sequence *temp = head;
+    while (temp != NULL)
+    {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+//function to delete element at particular position in the sequence ADT
+struct sequence *deleteNode(struct sequence *head, int i)
+{
+    struct sequence *sudo = head;
+    int cnt = 0;
+    if (i == 0)
+    {
+        head = sudo->next;
+        return head;
+    }
+    while (sudo != NULL && cnt < i - 1)
+    {
+        cnt++;
+        sudo = sudo->next;
+    }
+    if (sudo != NULL && sudo->next != NULL)
+    {
+        struct sequence *a = sudo->next;
+        sudo->next = a->next;
+    }
+    return head;
+}
+int main()
+{
+    struct sequence *head = (struct sequence *)malloc(sizeof(struct sequence));
+    head->data = 42;
+    head->next = NULL;
+    insert(&head, 1, 10);
+    insert(&head, 2, 27);
+    insert(&head, 3, 31);
+    insert(&head, 4, 99);
+    printf("Printing element in the sequence ADT: ");
+    print(head);
+    insert(&head, 2, 28);
+    printf("Printing element in the sequence ADT after innserting 28 at 2nd index: ");
+    print(head);
+    deleteNode(head, 3);
+    printf("Printing element in the sequence ADT after deleting element at 3rd index: ");
+    print(head);
 }
