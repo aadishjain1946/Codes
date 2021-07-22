@@ -1,10 +1,9 @@
 #include <iostream>
-#include <map>
 using namespace std;
 int main()
 {
+    cout << "Input:\n";
     //prompt user to enter input
-    cout << "Input\n";
     int n;
     cin >> n;
     int arr[n];
@@ -12,18 +11,26 @@ int main()
     {
         cin >> arr[i];
     }
-    //declaring a hasmap to get unique element from the given array
-    map<int, int> freq;
-    for (int i = 0; i < n; i++)
+    //calculating result by comparing all pairs
+    int ans = -1;
+    for (int i = 0; i < n - 1; i++)
     {
-        freq[arr[i]] += 1;
+        int sum = arr[i] + arr[i + 1];
+        int cnt = 1;
+        for (int j = i + 2; j < n - i;)
+        {
+            if (arr[j] + arr[j + 1] == sum)
+            {
+                cnt++;
+                j += 2;
+            }
+            else
+            {
+                j++;
+            }
+        }
+        ans = max(ans, cnt);
     }
     //printing output
-    cout << "Output\n";
-    int index = 1;
-    for (auto i : freq)
-    {
-        cout << index << " " << i.first << "\n";
-        index++;
-    }
+    cout << "Output: " << ans << '\n';
 }
