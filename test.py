@@ -1,13 +1,9 @@
-def paurSum(arr,n,target):
-    res = {}
-    for i in range(n):
-        if target - arr[i] in res:
-            return [res[target - arr[i]], i]
-        else:
-            res[arr[i]] = i
-
-arr = [int(i) for i in input("Enter Array Elements: ").split(" ")]
-target = int(input("Enter target: "))
-n = len(arr)
-print("Output: ",paurSum(arr,n,target))
-
+a_tuple = ("The institute",
+("Best Mystery & Thriller","The Silent Patient",68821),
+75717,
+[1,2,3,400,5,6,7],
+("Best Fiction","The Testaments",98291)
+)
+# to print 400 from the above tuple we can do this
+# just like array we can access tuple elements
+print(a_tuple[3][3])
