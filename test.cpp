@@ -1,49 +1,32 @@
 #include <iostream>
-
 using namespace std;
-
-class X
-
+//function to calculate sum of the given series
+double calcSum(double n, double i, double x)
 {
-
-    int m;
-
-public:
-    X() : m(10)
-
+    if (i >= n)
     {
+        double sum = (i / x);
+        return sum;
     }
-
-    X(int mm) : m(mm)
-
+    double sum = calcSum(n, i + 1, x);
+    if (((int)i % 2) != 0)
     {
+        sum += (i / x);
     }
-
-    int getm()
-
+    else
     {
-
-        return m;
+        sum -= (i / x);
     }
-};
-
-class Y : public X
-
-{
-
-    int n;
-
-public:
-    Y(int nn) : n(nn) {}
-
-    int getn() { return n; }
-};
-
+    return sum;
+}
 int main()
-
 {
-
-    Y yobj(100);
-
-    cout << yobj.getm() << " " << yobj.getn() << endl;
+    double sum = 13 + 150;
+    double n, x;
+    //prompt user to enter input
+    cout << "Enter n: ";
+    cin >> n;
+    cout << "Enter x: ";
+    cin >> x;
+    cout << "Sum of series: " << sum + calcSum(n, 1, x) << '\n';
 }
