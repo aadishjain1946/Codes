@@ -1,44 +1,12 @@
-def checkBracketRedundant(givenStr):
-
-    st = []
-
-    for ch in givenStr:
-
-        if (ch == ')'):
-            top = st[-1]
-            st.pop()
-            flag = True
-            while (top != '('):
-
-                if (top == '+' or top == '-' or top == '*' or top == '/'):
-                    flag = False
-
-                top = st[-1]
-                st.pop()
-
-            if (flag == True):
-                return True
-
-        else:
-            st.append(ch)
-
-    return False
+def show_palindromic_triangle(n):
+    for i in range(n):
+        for k in range(n - 1 - i):
+            print("", end=" ")
+        for j in range(1, n):
+            print(j, end=" ")
+        for l in range(i, 1, -1):
+            print(l, end=" ")
+        print()
 
 
-def findRedundant(givenStr):
-    ans = checkBracketRedundant(givenStr)
-    if (ans == True):
-        print("Yes")
-    else:
-        print("No")
-
-
-if __name__ == '__main__':
-    givenStr = "((a+b))"
-    findRedundant(givenStr)
-
-    givenStr = "(a+(b)/c)"
-    findRedundant(givenStr)
-
-    givenStr = "(a+b*(c-d))"
-    findRedundant(givenStr)
+show_palindromic_triangle(5)
