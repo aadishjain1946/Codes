@@ -2,21 +2,17 @@
 using namespace std;
 int main()
 {
-    //prompt user to enter array elements
+    //prompt user to enter an integer
     int n;
-    cout << "Enter size of array: ";
+    cout << "Enter an Integer: ";
     cin >> n;
-    int arr[n];
-    cout << "Enter Array Elements: ";
-    for (int i = 0; i < n; i++)
+    //shifting 2 bit to the left from right
+    for (int i = 0; i < 2; i++)
     {
-        cin >> arr[i];
+        n = n >> 1;
     }
-    //calculating sum of all elements
-    int sum = 0;
-    for (int i = 0; i < n; i++)
-    {
-        sum += arr[i];
-    }
-    cout << "Sum of all integers: " << sum << '\n';
+    //getting the 3rd bit that is present at last now
+    int ans = n & 1;
+    //printing result
+    cout << "3rd bit of the Integer: " << ans<< "\n";
 }

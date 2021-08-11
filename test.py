@@ -1,12 +1,10 @@
-def show_palindromic_triangle(n):
-    for i in range(n):
-        for k in range(n - 1 - i):
-            print("", end=" ")
-        for j in range(1, n):
-            print(j, end=" ")
-        for l in range(i, 1, -1):
-            print(l, end=" ")
-        print()
-
-
-show_palindromic_triangle(5)
+#declaring color and ratio list
+colorList = ["Red", "Yellow", "Blue"]
+ratioList = []
+#prompt user to enter ratio of colors
+for i in range(len(colorList)):
+    r = int(input("input ratio for " + colorList[i] + ": "))
+    ratioList.append(r)
+#printing the ratio of color
+for i in range(len(colorList)):
+    print(colorList[i] + " " + str(ratioList[i]) + " " + "parts")
