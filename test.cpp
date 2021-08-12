@@ -1,18 +1,20 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 int main()
 {
-    //prompt user to enter an integer
-    int n;
-    cout << "Enter an Integer: ";
-    cin >> n;
-    //shifting 2 bit to the left from right
-    for (int i = 0; i < 2; i++)
+    //creating max priority queue
+    priority_queue<int> maxpq;
+    //storing some integers in the priority queue
+    maxpq.push(10);
+    maxpq.push(20);
+    maxpq.push(30);
+    maxpq.push(40);
+    //displaying the top element
+    while (!maxpq.empty())
     {
-        n = n >> 1;
+        cout << "Top Element: " << maxpq.top() << '\n';
+        cout << "Deleting top element!!\n";
+        maxpq.pop();
     }
-    //getting the 3rd bit that is present at last now
-    int ans = n & 1;
-    //printing result
-    cout << "3rd bit of the Integer: " << ans<< "\n";
 }
