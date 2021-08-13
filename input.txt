@@ -1,6 +1,10 @@
-Text File Line 1
-Text File Line 2
-Text File Line 3
-Text File Line 4
-Text File Line 5
-Text File Line 6
+avgMaths = prompt user to enter average % of maths
+avgAllSub = prompt user to enter average % of all subjects
+
+if avgMaths >= 90 then
+    print "She will be admitted"
+else if avgMaths < 90 and avgMaths > 85 and avgAllSub >= 90 then
+    print "Need to complete BSc degree first"
+else
+    print "Cannot be admitted" 
+    
