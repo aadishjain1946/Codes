@@ -1,7 +1,17 @@
 import java.util.*;
 
 public class test {
+  public static class RetrieveRandomElmFromArrList{
+    public static Integer solution(ArrayList<Integer> arrList, int index){
+    // ↓↓↓↓ your code goes here ↓↓↓↓
+    int start = 0, end = arrList.size() - 1;
+    Random rand = new Random();
+    int ind = rand.nextInt(end-start) + start;
+    Integer output = new Integer(arrList.get(ind));
+    return 0;
+    }
+  }
   public static void main(String[] args) {
-    int i = 10,j=3,result; result=++j+ i--; j=i--; System.out.println(String.format("i=%d, j=%d, result=%d",i,j,result));
+    
   }
 }
