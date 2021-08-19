@@ -1,15 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
+//recursive function to return number of odd element in an array
+int oddRec(int *arr, int n)
+{
+    if (n < 0)
+    {
+        return 0;
+    }
+    int ans = oddRec(arr, n - 1);
+    if (arr[n] % 2 != 0)
+    {
+        return ans + 1;
+    }
+    return ans;
+}
 int main()
 {
-    int num1, num2, num3;
-    //prompt user to enter 3 integers
-    printf("Enter 3 integers: ");
-    scanf("%d", &num1);
-    scanf("%d", &num2);
-    scanf("%d", &num3);
-    //calculate the result
-    int output = (num1 + num2) * abs(num2 - num3);
-    //print the output
-    printf("The result is %d", output);
+    int arr[] = {1, 2, 3, 4, 5};
+    int n = 5;
+    int ans = oddRec(arr, n - 1);
+    printf("Output: %d", ans);
 }
