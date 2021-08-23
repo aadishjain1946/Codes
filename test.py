@@ -1,8 +1,7 @@
+#prompt user to enter 2 integers as input
 print("Input")
-n = int(input())
-arr = [int(i) for i in input().split(" ")]
-l,r = (int(i) for i in input().split(" "))
+a, b, c = (int(i) for i in input().split(" "))
 print("Output")
-for i in range(l-1, r):
-    print(arr[i],end=" ")
-    
+##calculating and printing the output
+ans = a * a + b * b + c * c
+print(ans)
