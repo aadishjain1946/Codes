@@ -1,17 +1,25 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
-vector<string> returnNames(vector<string> &names)
+bool checkVowel(char ch)
 {
-    vector<string> nameCopy;
-    for (int i = 0; i < names.size(); i++)
-    {
-        nameCopy.push_back(names[i]);
-    }
-    return nameCopy;
+    return (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'ch' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U');
 }
-int main()
+int mchin()
 {
-    vector<string> names, nameCopy;
-    nameCopy = returnNames(names);
+    vector<string> inputWord(10);
+    for (int i = 0; i < 10; i++)
+    {
+        cin >> inputWord[i];
+    }
+    sort(inputWord.begin(), inputWord.end());
+    for (int i = 0; i < 10; i++)
+    {
+        if (checkVowel(inputWord[i][0]) || checkVowel(inputWord[i][inputWord[i].length() - 1]))
+        {
+            continue;
+        }
+        cout << inputWord[i] << '\n';
+    }
 }
