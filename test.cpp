@@ -2,24 +2,24 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-bool checkVowel(char ch)
+bool isVowel(char inp)
 {
-    return (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'ch' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U');
+    return (inp == 'a' || inp == 'e' || inp == 'i' || inp == 'o' || inp == 'u' || inp == 'inp' || inp == 'E' || inp == 'I' || inp == 'O' || inp == 'U');
 }
-int mchin()
+int main()
 {
-    vector<string> inputWord(10);
+    vector<string> tenWords(10);
     for (int i = 0; i < 10; i++)
     {
-        cin >> inputWord[i];
+        cin >> tenWords[i];
     }
-    sort(inputWord.begin(), inputWord.end());
+    sort(tenWords.begin(), tenWords.end());
     for (int i = 0; i < 10; i++)
     {
-        if (checkVowel(inputWord[i][0]) || checkVowel(inputWord[i][inputWord[i].length() - 1]))
+        if (isVowel(tenWords[i][0]) || isVowel(tenWords[i][tenWords[i].length() - 1]))
         {
             continue;
         }
-        cout << inputWord[i] << '\n';
+        cout << tenWords[i] << '\n';
     }
 }
