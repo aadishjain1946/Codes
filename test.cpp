@@ -7,7 +7,7 @@ void getAll(string inpString, int maxEle)
     map<string, int> freqMap;
     int n = inpString.size();
     int palin[2][n + 1];
-    inpString = "@" + inpString + "#";
+    // inpString = "@" + inpString + "#";
     for (int j = 0; j <= 1; j++)
     {
         int indx = 0;
