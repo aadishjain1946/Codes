@@ -1,65 +1,20 @@
 import java.util.*;
 
 public class test {
-  static void palindromeSubStrs(String s)
+  static int trailZeros(int n)
     {
-      
-        TreeMap<String , Integer> m = new TreeMap<>();
-        int n = s.length();
-        int[][] R = new int[2][n+1];
-        s = "@" + s + "#";
-        for (int j = 0; j <= 1; j++)
+        if (n < 0) 
         {
-            int rp = 0;  
-            R[j][0] = 0;
-            int i = 1;
-            while (i <= n)
-            {
-              while (s.charAt(i - rp - 1) == s.charAt(i + 
-                                                j + rp))
-                    rp++; 
-                          
-                          
-       
-              
-              
-                R[j][i] = rp;
-                int k = 1;
-                while ((R[j][i - k] != rp - k) && (k < rp))
-                {
-                    R[j][i + k] = Math.min(R[j][i - k], 
-                                              rp - k);
-                    k++;
-                }
-                rp = Math.max(rp - k,0);
-                i += k;
-            }
+          return -1;
         }
-       
-      
-        s = s.substring(1, s.length()-1);
-       
-      
-      
-        m.put(s.substring(0,1), 1);
-        for (int i = 1; i < n; i++)
+        int cnt = 0;
+        for (int i = 5; n / i >= 1; i *= 5)
         {
-            for (int j = 0; j <= 1; j++)
-                for (int rp = R[j][i]; rp > 0; rp--)
-                   m.put(s.substring(i - rp - 1,  i - rp - 1 
-                                       + 2 * rp + j), 1);
-            m.put(s.substring(i, i + 1), 1);
+          cnt += n / i;
         }
-       
-      
-      
-       System.out.println("Below are " + (m.size())
-                           + " palindrome sub-strings");
-         
-       for (Map.Entry<String, Integer> ii:m.entrySet())
-          System.out.println(ii.getKey());
+        return cnt;
     }
   public static void main(String[] args) {
-    
+    System.out.println("Trailing zeros: " + trailZeros(100));
   }
 }

@@ -1,22 +1,41 @@
 #include <iostream>
-#include <bits/stdc++.h>
 using namespace std;
-double rnd(double val, unsigned char dec)
+int maxContigiousSum(int arr[], int n)
 {
-    double pw = pow(10.0f, (double)dec);
-    return round(val * pw) / pw;
+    if (n == 1)
+    {
+        return arr[0];
+    }
+    int ans = 0;
+    for (int i = 0; i < n; i++)
+    {
+        ans += arr[i];
+    }
+    int cMax = arr[0], mxVal = arr[0], cMin = arr[0], mnVal = arr[0];
+    for (int i = 1; i < n; i++)
+    {
+        cMax = max(cMax + arr[i], arr[i]);
+        mxVal = max(mxVal, cMax);
+        cMin = min(cMin + arr[i], arr[i]);
+        mnVal = min(mnVal, cMin);
+    }
+    if (mnVal == ans)
+    {
+        return mxVal;
+    }
+    return max(mxVal, ans - mnVal);
 }
 int main()
 {
-    double price, tax, total = 0;
-    cout << "Enter the price: ";
-    cin >> price;
-    cout << "  $" << price << '\n';
-    tax = price * 0.075;
-    tax = rnd(tax, 1);
-    cout << "+ $" << tax << "\n";
-    total = price + tax;
-    cout << "==========\n";
-    cout << "  $" << total << '\n';
+    int size;
+    cout << "Enter size of array: ";
+    cin >> size;
+    int arr[size];
+    cout << "Enter the element of array: ";
+    for (int i = 0; i < size; i++)
+    {
+        cin >> arr[i];
+    }
+    cout << "Maximum contigious sum of array is " << maxContigiousSum(arr, size) << endl;
     return 0;
 }
