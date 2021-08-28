@@ -1,9 +1,12 @@
 `
-    CREATE TABLE
-        Worker(
-            WorkerId int Primary Key,
-            Name varchar(15),
-            Department varchar(10)
-        )
-    
+    SELECT
+        studId as StudentId,
+        FirstName as FirstName
+    FROM
+        STUDENT
+    WHERE
+        city IN ("Coimbatore" OR "Chennai")
+        DOB = "08/10/1997"
+    ORDER BY
+        studId    
 `
