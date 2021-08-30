@@ -1,10 +1,6 @@
-avgMaths = prompt user to enter average % of maths
-avgAllSub = prompt user to enter average % of all subjects
-
-if avgMaths >= 90 then
-    print "She will be admitted"
-else if avgMaths < 90 and avgMaths > 85 and avgAllSub >= 90 then
-    print "Need to complete BSc degree first"
-else
-    print "Cannot be admitted" 
-    
+asdasda ad asdasdasd a r23rrergfg3gt rdf gert
+sdf sdf34r34 nrvhgvr h34frh34f 5 h23hj 4g23h4j23 
+345 j34h JASJHSAV 2
+3 J325434H5G 2
+41234J23GH5
+dshgf  DAJSFG wekfgjg732r2y8 jsdgfwe 9fy9
