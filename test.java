@@ -1,22 +1,24 @@
-import java.util.Scanner;
+import java.util.*;
 
-public class test {
-    public static int getSum(int n){
-        if(n <= 0){
-            return 0;
-        }
-        if(n%2 == 0 && n%3 == 0){
-            return n + getSum(n-1);
-        }
-        return getSum(n-1);
-    }
+public class StackTest {
     public static void main(String[] args)
     {
-        Scanner scnObj = new Scanner(System.in);
-        System.out.print("Enter n: ");
-        int n = scnObj.nextInt();
-        int sum = getSum(n);
-        System.out.println("Output: " + sum);
+       Stack<Integer> stack = new Stack<Integer>(); //custom stack implementation can contain some error, hence using inbuild stack
+       System.out.print("ENTER AN INTEGER VALUE(n): ");
+       int dec = new java.util.Scanner(System.in).nextInt();
+       int rem = dec%2;
+       stack.push(rem);
+       dec/=2;
+       while(dec!=0)
+       {
+           int temp = dec%2; //rem was already declared
+           stack.push(temp);
+           dec/=2;
+        }
+        System.out.print("Decimal to Binary  :");
+        while(!(stack.isEmpty())){
+            System.out.print(stack.pop());
+        }
     }
 
 }

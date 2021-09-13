@@ -1,11 +1,41 @@
 #include <stdio.h>
+#include <stdlib.h>
+int cmp(const void *num1, const void *num2)
+{
+    return (*(int *)num1 - *(int *)num2);
+}
+int max(int a, int b)
+{
+    if (a > b)
+    {
+        return a;
+    }
+    else
+    {
+        return b;
+    }
+}
 int main()
 {
-    int a, b;
-    printf("Enter Input: ");
-    scanf("%d", &a);
-    scanf("%d", &b);
-    int sum = a + b, difference = a - b, product = a * b, remainder = a % b;
-    float quotient = (float)a / (float)b;
-    printf("Output:\nSum: %d\nDifference: %d\nProduct: %d\nRemainder: %d\nQuotient: %f\n", sum, difference, product, remainder, quotient);
+    int n;
+    scanf("%d", &n);
+    int arr[n], pairSum[n - 1];
+    int maxSum = 0;
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    qsort((void *)arr, n, sizeof(arr[0]), cmp);
+    for (int i = 0; i < n - 1; i++)
+    {
+        pairSum[i] = abs(arr[i] - arr[i + 1]);
+        maxSum = max(maxSum, pairSum[i]);
+    }
+    for (int i = 0; i < n - 1; i++)
+    {
+        if (pairSum[i] == maxSum)
+        {
+            printf("%d %d ", arr[i], arr[i + 1]);
+        }
+    }
 }
