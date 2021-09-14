@@ -1,31 +1,22 @@
-class PredictCovid():
-    def diagnose(self, symptoms):
-        cnt = 0
-        for i in symptoms:
-            if symptoms[i] == "fever" or symptoms[i] == "cough" or symptoms[
-                    i] == "temperature":
-                cnt += 1
-        if cnt >= 3:
-            print("patient diagnosed with covid +")
+def q1(oriString, repeatCount, letterToRepeat):
+    freq = {}
+    for i in range(len(letterToRepeat)):
+        if letterToRepeat[i] not in freq:
+            freq[letterToRepeat[i].lower()] = 1
+    newString = ""
+    for i in range(len(oriString)):
+        if oriString[i].lower() in freq:
+            temp = ""
+            for j in range(repeatCount):
+                temp += oriString[i]
+            newString += temp
         else:
-            print("patient diagnosed with covid -")
+            newString += oriString[i]
+    return newString
 
 
-class CovidPatients(PredictCovid):
-    def __init__(self, id, name, visitdate, center):
-        self.id = id
-        self.name = name
-        self.visitdate = visitdate
-        self.center = center
-        self.symptoms = []
-
-    def CollectSymptoms(self):
-        self.id = int(input("Enter your ID: "))
-        self.name = input("Enter your name: ")
-        self.symptoms = [i for i in input("Enter symptoms: ").split(" ")]
-
-    def showDetails(self):
-        print("Patient Name: ", self.name)
-        print("Patient Id: ", self.id)
-        print("Patient's Symptoms: ", self.symptoms)
-        self.diagnose(self.symptoms)
+print(q1("Aab", 2, "az"))
+print(q1("Our cat is funny.", 5, "aeiou"))
+print(q1("Our cat is funny.", 3, "zu"))
+print(q1("Hi there, Jim!!!", 2, "jix"))
+print(q1("caat", 0, "az"))

@@ -1,4 +1,5 @@
-I love Python Programming
-It is very easy to understand the code 
-It can code very hard problems easily in python code 
-Python programming is the best programming language 
+Loop i = 1 to 100
+    if(i % 5 == 0)
+        Write i
+    end if
+end Loop
