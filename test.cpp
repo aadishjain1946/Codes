@@ -1,41 +1,38 @@
 #include <iostream>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <algorithm>
 using namespace std;
 int main()
 {
-    int n = 6;
-    string strArr[n];
-    for (int i = 0; i < n; i++)
+    int mat[5][5] = {{1, 2, 3, 4, 5},
+                     {6, 7, 8, 9, 10},
+                     {11, 12, 13, 14, 15},
+                     {16, 17, 18, 19, 20},
+                     {21, 22, 23, 24, 25}};
+    int matRev[5][5];
+    for (int i = 0; i < 5; i++)
     {
-        cin >> strArr[i];
-    }
-    unordered_map<string, vector<int>> myMap;
-    for (int i = 0; i < n; i++)
-    {
-        string temp = strArr[i];
-        sort(temp.begin(), temp.end());
-        if (myMap.count(temp) == 0)
+        int k = 0;
+        for (int j = 4; j >= 0; j--, k++)
         {
-            vector<int> sudo;
-            sudo.push_back(i);
-            myMap[temp] = sudo;
-        }
-        else
-        {
-            myMap[temp].push_back(i);
+            matRev[i][k] = mat[i][j];
         }
     }
-    for (auto i : myMap)
+    cout << "Original Matrix: \n";
+    for (int i = 0; i < 5; i++)
     {
-        vector<int> temp = i.second;
-        for (int j = 0; j < temp.size(); j++)
+        for (int j = 0; j < 5; j++)
         {
-            cout << strArr[temp[j]] << " ";
+            cout << mat[i][j] << " ";
         }
-        cout << '\n';
+        cout << "\n";
+    }
+    cout << "Reverse Matrix: \n";
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            cout << matRev[i][j] << " ";
+        }
+        cout << "\n";
     }
     return 0;
 }
