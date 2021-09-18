@@ -104,7 +104,13 @@
             </div>
         </div>
     </div>
-
+    <script>
+        const pEle = document.createElement("p");
+        const data = document.createTextNode("This is a sample P Element.");
+        pEle.appendChild(data);
+        document.appendChild(pEle);
+        document.appendChild(currentElm);
+    </script>
 </body>
 
 </html>

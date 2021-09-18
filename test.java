@@ -2,35 +2,18 @@ import java.util.*;
 import java.text.DecimalFormat;
 
 public class test {
-    public static class node{
-        public int data;
-        public node next;
-        public node(int data){
-            this.data = data;
-            this.next = null;
+    public void get() throws InterruptedException
+    {
+        while (true) {
+            synchronized (this)
+            {
+                System.out.println("Got-"+ n);
+                notify();
+                Thread.sleep(1000);
+            }
         }
     }
-    public static void makePalindrome(node root){
-        if(root == null){
-            return;
-        }
-        node newnode = new node(root.data);
-        makePalindrome(root.next);
-        node tail = root;
-        while(tail.next != null){
-            tail = tail.next;
-        }
-        tail.next = newnode;
-    }
-    public static void print(node root){
-        node temp = root;
-        System.out.print("Elements in Linked list: ");
-        while(temp != null){
-            System.out.print(temp.data + " ");
-            temp = temp.next;
-        }
-        System.out.println(" ");
-    }
+
     public static void main(String[] args)
     {
         node root = new node(1);

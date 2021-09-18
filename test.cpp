@@ -2,37 +2,21 @@
 using namespace std;
 int main()
 {
-    int mat[5][5] = {{1, 2, 3, 4, 5},
-                     {6, 7, 8, 9, 10},
-                     {11, 12, 13, 14, 15},
-                     {16, 17, 18, 19, 20},
-                     {21, 22, 23, 24, 25}};
-    int matRev[5][5];
-    for (int i = 0; i < 5; i++)
+    int mat[2][3] = {{1, 2, 3}, {4, 5, 6}};
+    int sum = 0;
+    for (int i = 0; i < 2; i++)
     {
-        int k = 0;
-        for (int j = 4; j >= 0; j--, k++)
+        for (int j = 0; j < 3; j++)
         {
-            matRev[i][k] = mat[i][j];
+            sum += mat[i][j];
         }
     }
-    cout << "Original Matrix: \n";
-    for (int i = 0; i < 5; i++)
+    cout << "Sum of element of matrix: " << sum << '\n';
+    int maxFirst = -1;
+    for (int i = 0; i < 3; i++)
     {
-        for (int j = 0; j < 5; j++)
-        {
-            cout << mat[i][j] << " ";
-        }
-        cout << "\n";
+        maxFirst = max(maxFirst, mat[0][i]);
     }
-    cout << "Reverse Matrix: \n";
-    for (int i = 0; i < 5; i++)
-    {
-        for (int j = 0; j < 5; j++)
-        {
-            cout << matRev[i][j] << " ";
-        }
-        cout << "\n";
-    }
+    cout << "Max element in first row: " << maxFirst << '\n';
     return 0;
 }
