@@ -1,5 +1,3 @@
-Loop i = 1 to 100
-    if(i % 5 == 0)
-        Write i
-    end if
-end Loop
+numbCenti = take input(Enter a number in centimeters)
+numbInch = numbCenti/2.54
+print "number in inches =" numbInch
