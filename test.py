@@ -1,18 +1,18 @@
-def print_factorial(fact_counter, fact_value):
-    output_string = ''
-    if fact_counter == 0:  # Base case: 0! = 1
-        output_string += '1'
-    elif fact_counter == 1:  # Base case: print 1 and result
-        output_string += str(fact_counter) + ' = ' + str(fact_value)
-    else:  # Recursive case
-        output_string += str(fact_counter) + ' * '
-        next_counter = fact_counter - 1
-        next_value = next_counter * fact_value
-        output_string += print_factorial(next_counter,next_value)
-
-    return output_string
-
-
-user_val = int(input())
-print('%d! = ' % user_val, end="")
-print(print_factorial(user_val, user_val))
+gems = ["Emerald", "Ivory", "Jasper", "Ruby", "Garnet"]
+prices = [1760, 2119, 1599, 3920, 3999]
+qty = [0, 0, 0, 0, 0]
+total = 0
+for i in range(len(gems)):
+    print("#" + str(i + 1), gems[i], ", Rs. " + str(prices[i]))
+    qty[i] = int(input("Enter qty: "))
+    total = qty[i] * prices[i]
+print("\nTotal Bill")
+for i in range(len(gems)):
+    print(
+        str(i + 1) + ". ", gems[i] + " X " + str(qty[i]) + " = Rs. " + str(
+            (qty[i] * prices[i])))
+if (total > 30000):
+    print("Discount @5% - Rs." + str(total * 0.05))
+    print("Total Rs. " + str(total - total * 0.05))
+else:
+    print("Total Rs. " + str(total))
