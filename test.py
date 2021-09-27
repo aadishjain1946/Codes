@@ -1,15 +1,8 @@
-C = []
-for i in range(4):
-    sudo = []
-    for j in range(4):
-        if i == j:
-            sudo.append(1)
-        else:
-            sudo.append(0)
-    C.append(sudo)
+import math
+def solveEquation():
+    n = int(input("Enter an integer greater than or equal to 10: "))
+    r = math.sqrt(n - 10)
+    return r
+r = solveEquation()
+print("Output:",r)
 
-for i in range(4):
-    for j in range(4):
-        print(C[i][j],end=" ")
-    print("")
-    
