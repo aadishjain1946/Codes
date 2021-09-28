@@ -1,8 +1,7 @@
 import math
-def solveEquation():
-    n = int(input("Enter an integer greater than or equal to 10: "))
-    r = math.sqrt(n - 10)
-    return r
-r = solveEquation()
-print("Output:",r)
+def distance(x,y):
+    output = math.sqrt((x*x) + (y*y))
+    return round(2* output,2)
 
+out = distance(10,15)
+print("Output for x = 10, y = 15:",out)
