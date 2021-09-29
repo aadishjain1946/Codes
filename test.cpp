@@ -1,61 +1,14 @@
 #include <iostream>
+#include <math.h>
 using namespace std;
-class Node
-{
-public:
-    int data;
-    struct Node *left, *mid, *right;
-    Node(int data)
-    {
-        this->data = data;
-        this->left = this->mid = this->right = NULL;
-    }
-};
-void insert(struct Node **root, int data)
-{
-
-    if (!(*root))
-    {
-        *root = new Node(data);
-        return;
-    }
-
-    if ((data) < (*root)->data)
-        insert(&((*root)->left), data);
-
-    else if ((data) > (*root)->data)
-        insert(&((*root)->right), data);
-
-    else
-    {
-        insert(&((*root)->mid), data);
-    }
-}
-
-void traverse(struct Node *root)
-{
-    if (root)
-    {
-
-        traverse(root->left);
-        cout << root->data << " ";
-        traverse(root->mid);
-        traverse(root->right);
-    }
-}
-
 int main()
 {
-    Node *root = NULL;
-
-    insert(&root, 1);
-    insert(&root, 2);
-    insert(&root, 1);
-    insert(&root, 3);
-    insert(&root, 4);
-
-    cout << "Traversal of ternary tree\n";
-    traverse(root);
-
+    int angle1, angle2, angle3;
+    cout << "Enter 1st angle of the triangle: ";
+    cin >> angle1;
+    cout << "Enter 2nd angle of the triangle: ";
+    cin >> angle2;
+    angle3 = 180 - angle1 - angle2;
+    cout << "The 3rd angle of the triangle is: " << angle3;
     return 0;
 }
