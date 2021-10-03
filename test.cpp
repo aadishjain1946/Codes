@@ -1,14 +1,51 @@
 #include <iostream>
-#include <math.h>
+#include <algorithm>
 using namespace std;
+bool comparator(int a, int b)
+{
+    return a > b;
+}
 int main()
 {
-    int angle1, angle2, angle3;
-    cout << "Enter 1st angle of the triangle: ";
-    cin >> angle1;
-    cout << "Enter 2nd angle of the triangle: ";
-    cin >> angle2;
-    angle3 = 180 - angle1 - angle2;
-    cout << "The 3rd angle of the triangle is: " << angle3;
+    int n = 12;
+    int arr[n], even[n], odd[n];
+    bool flag = true;
+    int j = 0, k = 0;
+    cout << "Input: ";
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+        if (arr[i] % 2 == 0)
+        {
+            even[j] = arr[i];
+            j++;
+        }
+        else
+        {
+            odd[k] = arr[i];
+            k++;
+        }
+        if (arr[i] < 0)
+        {
+            flag = false;
+        }
+    }
+    if (flag == false)
+    {
+        cout << "ERROR! Please input a positive whole number only.\n";
+        exit(0);
+    }
+    sort(even, even + j);
+    sort(odd, odd + j, comparator);
+    cout << "Even: ";
+    for (int i = 0; i < j; i++)
+    {
+        cout << even[i] << " ";
+    }
+    cout << "\nOdd: ";
+    for (int i = 0; i < k; i++)
+    {
+        cout << odd[i] << " ";
+    }
     return 0;
 }
