@@ -1,18 +1,14 @@
-ch1 = input()
-ch2 = input()
-l = 1
-for i in range(5):
-    temp = ""
-    if i == 0 or i == 4:
-        temp = ' '
-    else:
-        temp = ch1
-    for j in range(6):
-        print(temp, end="")
-    for k in range(l):
-        print(ch2, end="")
-    if i < 2:
-        l += 1
-    else:
-        l -= 1
-    print("\n", end="")
+num = int(input("Enter a number: "))
+
+if num < 0:
+    num *= -1
+
+digitCount = 0
+while num > 0:
+    digitCount += 1
+    num = int(num / 10)
+
+if digitCount > 6:
+    print("Output: Lots")
+else:
+    print("Output:", digitCount)
