@@ -1,36 +1,28 @@
 #include <stdio.h>
-void countChanges(double amount, float denominations[], int denomCount[])
+#include <math.h>
+int countDigit(long long int num)
 {
-    int amt1 = amount * 1000;
-    if (amt1 <= 0)
+    int count = 0;
+    while (num > 0)
     {
-        return;
+        count++;
+        num /= 10;
     }
-    double denm = 0;
-    for (int i = 0; i < 5; i++)
-    {
-        float amt = (float)amount;
-        if (denominations[i] <= amt)
-        {
-            denm = denominations[i];
-            denomCount[i]++;
-            break;
-        }
-    }
-    countChanges(amount - denm, denominations, denomCount);
-}
-void displayChanges(double amount)
-{
-    float denominations[] = {1, 0.25, 0.1, 0.05, 0.01};
-    int denomCount[5] = {0, 0, 0, 0, 0};
-    countChanges(amount, denominations, denomCount);
-    printf("%d dollars, %d quarters, %d dimes, %d nickles, %d cents.\n", denomCount[0], denomCount[1], denomCount[2], denomCount[3], denomCount[4]);
+    return count;
 }
 int main()
 {
-    printf("Input: $");
-    double amount;
-    scanf("%lf", &amount);
-    printf("Output: ");
-    displayChanges(amount);
+    printf("Enter distance in miles: ");
+    long long int distMiles;
+    scanf("%lld", &distMiles);
+    long long int distFeet = distMiles * 5280;
+    if (distFeet > 15000)
+    {
+        printf("It might be beneficial to drive the distance.\n");
+    }
+    printf("Distance in feet: %lld\n", distFeet);
+    int n = countDigit(distFeet) - 1;
+    long long int h = pow(10, n);
+    double distFe = (double)((1.0) * distFeet) / ((1.0) * h);
+    printf("Distance in feet: %lf X 10^%d\n", distFe, n);
 }

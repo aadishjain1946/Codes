@@ -1,51 +1,23 @@
 #include <iostream>
-#include <algorithm>
+#include <string.h>
 using namespace std;
-bool comparator(int a, int b)
-{
-    return a > b;
-}
 int main()
 {
-    int n = 12;
-    int arr[n], even[n], odd[n];
-    bool flag = true;
-    int j = 0, k = 0;
-    cout << "Input: ";
-    for (int i = 0; i < n; i++)
+    int marks[10] = {67, 34, 12, 98, 76, 9, 87, 81, 91, 23};
+    float average = 0;
+    for (int i = 0; i < 10; i++)
     {
-        cin >> arr[i];
-        if (arr[i] % 2 == 0)
+        average += marks[i];
+    }
+    average /= 10;
+    int count = 0;
+    for (int i = 0; i < 10; i++)
+    {
+        if (marks[i] < average)
         {
-            even[j] = arr[i];
-            j++;
-        }
-        else
-        {
-            odd[k] = arr[i];
-            k++;
-        }
-        if (arr[i] < 0)
-        {
-            flag = false;
+            count++;
         }
     }
-    if (flag == false)
-    {
-        cout << "ERROR! Please input a positive whole number only.\n";
-        exit(0);
-    }
-    sort(even, even + j);
-    sort(odd, odd + j, comparator);
-    cout << "Even: ";
-    for (int i = 0; i < j; i++)
-    {
-        cout << even[i] << " ";
-    }
-    cout << "\nOdd: ";
-    for (int i = 0; i < k; i++)
-    {
-        cout << odd[i] << " ";
-    }
+    cout << "Count of students with below average performance: " << count << '\n';
     return 0;
 }
