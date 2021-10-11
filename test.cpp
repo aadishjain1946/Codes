@@ -1,23 +1,46 @@
 #include <iostream>
-#include <string.h>
 using namespace std;
-int main()
+class Object
 {
-    int marks[10] = {67, 34, 12, 98, 76, 9, 87, 81, 91, 23};
-    float average = 0;
-    for (int i = 0; i < 10; i++)
+    int x, y, z;
+
+public:
+    Object()
     {
-        average += marks[i];
+        x = y = z = 0;
     }
-    average /= 10;
-    int count = 0;
-    for (int i = 0; i < 10; i++)
+    Object(int d)
     {
-        if (marks[i] < average)
+        x = y = z = d;
+    }
+    int x()
+    {
+        return x;
+    }
+    int y()
+    {
+        return y;
+    }
+    int z()
+    {
+        return z;
+    }
+};
+template <typename Object>
+void test()
+{
+    const Object x(2), y;
+    if (x.x() == y.y())
+    {
+        Object z;
+        if (Object::x() == z.z())
         {
-            count++;
+            return;
         }
     }
-    cout << "Count of students with below average performance: " << count << '\n';
+}
+int main(int argc, char **argv)
+{
+    test<Object>();
     return 0;
 }
