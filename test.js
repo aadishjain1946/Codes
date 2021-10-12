@@ -1,15 +1,24 @@
-function RecuriveCopy(strInp, num) {
-    if (num <= 0) {
-        return strInp;
+function treeOneZeros(n) {
+    let mid = n / 2
+    if (n % 2 == 0) {
+        mid = (n - 1) / 2
     }
-    rec = RecuriveCopy(strInp, num - 1)
-    return rec + strInp;
+    let left = mid
+    let right = mid + 1
+    let out = '0'.repeat(n)
+    for (let i = 0; i < n; i++) {
+        if (i % 2 == 0) {
+            out = out.substring(0, left) + "1" + out.substring(left + 1)
+            left--
+        } else {
+            out = out.substring(0, right) + "1" + out.substring(right + 1)
+            right++
+        }
+        console.log(out)
+    }
+
 }
-strInp = "a"
-n = 10
-output = RecuriveCopy(strInp, n)
-if((n+1)%2 == 0){
-    console.log(output + " has a(n) even numbers of "+strInp+"'s")
-}else{
-    console.log(output + " has a(n) odd numbers of "+strInp+"'s")
-}
+console.log("For n = 4")
+treeOneZeros(4)
+console.log("For n = 7")
+treeOneZeros(7)

@@ -1,3 +1,2 @@
-import math
-mathDecs = dir(math)
-print(mathDecs)
+myString = "!!!!!"
+print("Output: ",myString)

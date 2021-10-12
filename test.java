@@ -1,17 +1,20 @@
 import java.util.*;
 public class test {
+    static int getMissingInt(int[] arr, int n){
+        int missing = arr[0];
+        for(int i = 1;i<n;i++){
+            missing = missing ^ arr[i];
+        }
+        for(int i = 1;i<n;i++){
+            missing = missing ^ i;
+        }
+        return missing;
+    }
     public static void main(String[] args)
     {
-        Scanner scnObj = new Scanner(System.in);
-        System.out.print("Enter starting point of line (x, y): ");
-        int x1 = scnObj.nextInt();
-        int y1 = scnObj.nextInt();
-        System.out.print("Enter ending point of line (x, y): ");
-        int x2 = scnObj.nextInt();
-        int y2 = scnObj.nextInt();
-        int xMid = (x1 + x2)/2;
-        int yMid = (y1 + y2)/2;
-        System.out.println("\nMid Point of line (x, y): (" + xMid + ", " + yMid + ")");
+        int n = 5;
+        int[] arr = {1,2,3,3,4};
+        System.out.println("Output: "+getMissingInt(arr, n));
     }
 
 }

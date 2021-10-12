@@ -1,46 +1,27 @@
+#include <cstring>
 #include <iostream>
+#include <queue>
+#include <string>
+#include "Search.cpp"
 using namespace std;
-class Object
+int main()
 {
-    int x, y, z;
-
-public:
-    Object()
+    //Fill your code here
+    int n, k;
+    cin >> n;
+    int *arr = new int[n];
+    for (int i = 0; i < n; i++)
     {
-        x = y = z = 0;
+        cin >> arr[i];
     }
-    Object(int d)
+    cin >> k;
+    Search s1(arr, n);
+    if (s1.search(n, k))
     {
-        x = y = z = d;
+        cout << "Element found\n";
     }
-    int x()
+    else
     {
-        return x;
+        cout << "Element not found\n";
     }
-    int y()
-    {
-        return y;
-    }
-    int z()
-    {
-        return z;
-    }
-};
-template <typename Object>
-void test()
-{
-    const Object x(2), y;
-    if (x.x() == y.y())
-    {
-        Object z;
-        if (Object::x() == z.z())
-        {
-            return;
-        }
-    }
-}
-int main(int argc, char **argv)
-{
-    test<Object>();
-    return 0;
 }
