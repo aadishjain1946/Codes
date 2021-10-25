@@ -1,22 +1,30 @@
-n1 = int(input("Enter n1: "))
-n2 = int(input("Enter n2: "))
+def determing_stars(total):
+    stars = ''
+    if total >= 9:
+        stars = "*****"
+    elif total >= 8.0 and total <= 8.9:
+        stars = "****"
+    elif total >= 7.0 and total <= 7.9:
+        stars = "***"
+    elif total >= 6.0 and total <= 6.9:
+        stars = "**"
+    elif total >= 5.0 and total <= 5.9:
+        stars = "*"
+    else:
+        stars = 'No Stars'
+    return stars
 
-while (n1 >= n2 or n1<=0 or n2<=0):
-    print("Invalid Input!!")
-    n1 = int(input("Enter n1: "))
-    n2 = int(input("Enter n2: "))
 
-ans1 = 0
-ans2 = 0
-ans3 = 0
-for i in range(n1, n2 + 1):
-    if ((i % 7 == 0) and (i % 3 != 0)):
-        ans1 += 1
-    if ((i % 5 == 0)):
-        ans2 += 1
-    if ((i % 5 == 0) and (i % 9 == 0)):
-        ans3 += 1
+i = 0
+total = 0
+while i < 5:
+    num = int(input("Enter critic's score between 0 and 10: "))
+    if num < 1 or num > 10:
+        print("Error: ", end="")
+    else:
+        total += num
+        i += 1
 
-print("Number of integers that satisfy A from", n1, "to", n2, ":", ans1)
-print("Number of integers that satisfy B from", n1, "to", n2, ":", ans2)
-print("Number of integers that satisfy C from", n1, "to", n2, ":", ans3)
+total /= 5
+stars = determing_stars(total)
+print("Your score of", total, "gives you", stars)

@@ -1,14 +1,5 @@
-fEle <- A[0]
-sEle <- -INFY
-tEle <- -INFY
-for i <- 1 to N
-    if A[i] > fEle then
-        tEle  = sEle;
-        sEle = fEle;
-        fEle  = A[i];
-    else if A[i] > sEle then
-        tEle = sEle;
-        sEle = A[i];
-    else if A[i] > tEle then
-        tEle = A[i];
-return tEle
+sum = 0
+loop
+    num = take input
+    sum += num
+    print sum
