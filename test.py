@@ -1,30 +1,19 @@
-def determing_stars(total):
-    stars = ''
-    if total >= 9:
-        stars = "*****"
-    elif total >= 8.0 and total <= 8.9:
-        stars = "****"
-    elif total >= 7.0 and total <= 7.9:
-        stars = "***"
-    elif total >= 6.0 and total <= 6.9:
-        stars = "**"
-    elif total >= 5.0 and total <= 5.9:
-        stars = "*"
-    else:
-        stars = 'No Stars'
-    return stars
+def calMinGunFire(n1, n2):
+    if n1 == 0 and n2 == 0:
+        return 0
+    if n1 <= 0:
+        return 99999
+    if n2 <= 0:
+        return 99999
+
+    ans1 = calMinGunFire(n1 - 1, n2 - 1) + 1
+    ans2 = 99999
+    ans3 = 99999
+    if n1 < n2:
+        ans2 = calMinGunFire(n1 * 2, n2) + 1
+    if n1 > n2:
+        ans3 = calMinGunFire(n1, n2 * 2) + 1
+    return min(ans1, min(ans2, ans3))
 
 
-i = 0
-total = 0
-while i < 5:
-    num = int(input("Enter critic's score between 0 and 10: "))
-    if num < 1 or num > 10:
-        print("Error: ", end="")
-    else:
-        total += num
-        i += 1
-
-total /= 5
-stars = determing_stars(total)
-print("Your score of", total, "gives you", stars)
+print(calMinGunFire(2, 6))
