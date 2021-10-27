@@ -1,13 +1,17 @@
 #include <stdio.h>
 #include <math.h>
-void power(int x, int y)
+int countDigit(int num)
 {
-    float output = pow(x, y);
-    printf("%d ^ %d is %f\n", x, y, output);
+    if (num <= 0)
+    {
+        return 0;
+    }
+    return countDigit(num / 10) + 1;
 }
 int main()
 {
-    power(3, 5);
-    power(3, -5);
-    power(2, 10);
+    int num;
+    printf("Input a number: ");
+    scanf("%d", &num);
+    printf("The number of digits in the number is: %d", countDigit(num));
 }
