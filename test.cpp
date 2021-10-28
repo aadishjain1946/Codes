@@ -9,26 +9,52 @@ int main()
         int n;
         cin >> n;
         int arr[n];
-        unordered_set<int> myset;
         for (int i = 0; i < n; i++)
         {
             cin >> arr[i];
-            myset.insert(arr[i]);
         }
-        int outstanding = 0, average = 0;
-        for (auto i : myset)
+        stack<int> mystack;
+        int maxArea = 0;
+        int i = 0;
+        for (; i < n;)
         {
-            outstanding = max(outstanding, i);
+            if (mystack.empty() || arr[mystack.top()] <= arr[i])
+            {
+                mystack.push(i);
+                i++;
+            }
+            else
+            {
+                int top = mystack.top();
+                mystack.pop();
+                int area = 0;
+                if (mystack.empty())
+                {
+                    area = arr[top] * i;
+                }
+                else
+                {
+                    area = arr[top] * (i - mystack.top() - 1);
+                }
+                maxArea = max(maxArea, area);
+            }
         }
-        average = n - outstanding;
-        if (outstanding > n || outstanding < 0)
+        while (!mystack.empty())
         {
-            cout << -1 << '\n';
+            int top = mystack.top();
+            mystack.pop();
+            int area = 0;
+            if (mystack.empty())
+            {
+                area = arr[top] * i;
+            }
+            else
+            {
+                area = arr[top] * (i - mystack.top() - 1);
+            }
+            maxArea = max(maxArea, area);
         }
-        else
-        {
-            cout << average << '\n';
-        }
+        cout << maxArea << '\n';
     }
     return 0;
 }
