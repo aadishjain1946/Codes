@@ -1,60 +1,42 @@
 #include <bits/stdc++.h>
 using namespace std;
+bool containsDigit(int n, int y)
+{
+    while (n > 0)
+    {
+        if (n % 10 == y)
+        {
+            return true;
+        }
+        n /= 10;
+    }
+    return false;
+}
+int getCOunt(int x, int y)
+{
+    int count = 0;
+    int i = 1;
+    while (1)
+    {
+        if (!containsDigit(x, y))
+        {
+            break;
+        }
+        x += i;
+        i++;
+        count++;
+    }
+    return count;
+}
 int main()
 {
     int test;
     cin >> test;
     while (test--)
     {
-        int n;
-        cin >> n;
-        int arr[n];
-        for (int i = 0; i < n; i++)
-        {
-            cin >> arr[i];
-        }
-        stack<int> mystack;
-        int maxArea = 0;
-        int i = 0;
-        for (; i < n;)
-        {
-            if (mystack.empty() || arr[mystack.top()] <= arr[i])
-            {
-                mystack.push(i);
-                i++;
-            }
-            else
-            {
-                int top = mystack.top();
-                mystack.pop();
-                int area = 0;
-                if (mystack.empty())
-                {
-                    area = arr[top] * i;
-                }
-                else
-                {
-                    area = arr[top] * (i - mystack.top() - 1);
-                }
-                maxArea = max(maxArea, area);
-            }
-        }
-        while (!mystack.empty())
-        {
-            int top = mystack.top();
-            mystack.pop();
-            int area = 0;
-            if (mystack.empty())
-            {
-                area = arr[top] * i;
-            }
-            else
-            {
-                area = arr[top] * (i - mystack.top() - 1);
-            }
-            maxArea = max(maxArea, area);
-        }
-        cout << maxArea << '\n';
+        int x, y;
+        cin >> x >> y;
+        cout << getCOunt(x, y) << '\n';
     }
     return 0;
 }

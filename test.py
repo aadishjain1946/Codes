@@ -1,27 +1,21 @@
-def genMatrix(n):
-    output = []
-    output.append([0])
-    i = 2
-    while i <= n:
-        curZero = i - 1
-        curCount = 1
-        temp = []
-        for j in range(i):
-            for k in range(curZero):
-                temp.append(0)
-            for k in range(curCount, 0, -1):
-                temp.append(k)
-            curCount += 1
-            curZero -= 1
-        output.append(temp)
+def helper(x, y):
+    result = 0
+    i = 1
+    while (True):
+        flag = False
+        while x > 0:
+            if x % 10 == y:
+                flag = True
+            x /= 10
+        if flag == False:
+            break
+        x += i
         i += 1
-    return output
+        result += 1
+    return result
 
 
-n = int(input("Enter n: "))
-arr = genMatrix(n)
-print("Output: ")
-for i in range(len(arr)):
-    for j in range(len(arr[i])):
-        print(arr[i][j], end=" ")
-    print()
+t = int(input())
+for k in range(t):
+    x, y = (int(i) for i in input().split(" "))
+    print(helper(x, y))
