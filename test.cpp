@@ -1,42 +1,20 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
-bool containsDigit(int n, int y)
+struct Product
 {
-    while (n > 0)
-    {
-        if (n % 10 == y)
-        {
-            return true;
-        }
-        n /= 10;
-    }
-    return false;
-}
-int getCOunt(int x, int y)
-{
-    int count = 0;
-    int i = 1;
-    while (1)
-    {
-        if (!containsDigit(x, y))
-        {
-            break;
-        }
-        x += i;
-        i++;
-        count++;
-    }
-    return count;
-}
+    string description; // Product description
+    int partNum;        // Part number
+    double cost;        // Product cost
+};
 int main()
 {
-    int test;
-    cin >> test;
-    while (test--)
+    struct Product p1[100];
+    for (int i = 0; i < 100; i++)
     {
-        int x, y;
-        cin >> x >> y;
-        cout << getCOunt(x, y) << '\n';
+        p1[i].description = "";
+        p1[i].partNum = 0;
+        p1[i].cost = 0;
+        cout << p1[i].description << " " << p1[i].partNum << " " << p1[i].cost << '\n';
     }
     return 0;
 }
