@@ -1,30 +1,44 @@
 import java.util.*;
 public class test
 {
-	public static enum Level{
-		LOW(0,30),
-		MEDIUM(30,60),
-		HIGH(60,Integer.MAX_VALUE);
-		public int maxVal,minVal;
-		private Level(int minVal,int maxVal){
-			this.minVal = minVal;
-			this.maxVal = maxVal;
+	static int count = 0;
+    public static int readGrades() {
+        int grade;
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a grade : ");
+        grade = input.nextInt();
+        return grade;
+    }
+	public static int maxValue(int []grades,int j,int n){
+		int maxVal = -1;
+		for(int i = j;i<=n;i++){
+			maxVal = Math.max(grades[i],maxVal);
 		}
-		public static Level getLevel(int n){
-			for(Level v : values())
-            {
-				if(n <= v.maxVal && n >= v.minVal) return v;
-			}
-			return null;
+		return maxVal;
+	}
+	public static int minValue(int []grades,int j,int n){
+		int minVal = 9999;
+		for(int i = j;i<=n;i++){
+			minVal = Math.min(grades[i],minVal);
 		}
+		return minVal;
 	}
-	public static void main(String[] args)
-	{
-		Level l1 = Level.getLevel(35);
-		System.out.println(l1);
-		Level l2 = Level.getLevel(25);
-		System.out.println(l2);
-		Level l3 = Level.getLevel(95);
-		System.out.println(l3);
-	}
+	public static void main(String[] args) {
+        int grade[] = new int[1000];
+        int i = 0;
+        while (i < 100) {
+            grade[i] = readGrades();
+            if (grade[i] == -1) {
+                grade[i] = -1;
+                break;
+            } else {
+                i++;
+                count++;
+            }
+        }
+
+        System.out.println("Number of grades: " + count);
+		System.out.println("The maximum grades is: " + maxValue(grade, 0, count -1));
+		System.out.println("The minimum grades is: " + minValue(grade, 0, count -1));
+    }
 }

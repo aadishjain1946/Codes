@@ -1,42 +1,28 @@
 #include <stdio.h>
-int getDigit(int n, int y)
-{
-    while (n > 0)
-    {
-        if (n % 10 == y)
-        {
-            return 1;
-        }
-        n /= 10;
-    }
-    return 0;
-}
-int GetCount(int x, int y)
-{
-    int count = 0;
-    int i = 1;
-    while (1)
-    {
-        if (!getDigit(x, y))
-        {
-            break;
-        }
-        x += i;
-        i++;
-        count++;
-    }
-    return count;
-}
 int main()
 {
-    int test;
-    scanf("%d", &test);
-    while (test--)
+    int numRows = 0;
+    printf("Enter the number of rows: ");
+    scanf("%d", &numRows);
+    printf("\n");
+    for (int i = 1; i <= numRows; ++i)
     {
-        int x, y;
-        scanf("%d", &x);
-        scanf("%d", &y);
-        printf("%d \n", GetCount(x, y));
+        for (int k = 1; k <= i; ++k)
+        {
+            printf(" ");
+        }
+        for (int j = 1; j <= ((numRows * 2) - ((2 * i) - 1)); ++j)
+        {
+            if (i == 1 || j == 1 || j == ((numRows * 2) - ((2 * i) - 1)))
+            {
+                printf("*");
+            }
+            else
+            {
+                printf(" ");
+            }
+        }
+        printf("\n");
     }
     return 0;
 }
