@@ -1,7 +1,1 @@
-n = prompt user to input an integer
-loop i = 1 to n
-    loop j = 1 to n
-        print j
-    print newLine
-    end loop
-end loop
+abcd abcd abcd,abcd,abcd
