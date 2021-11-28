@@ -1,28 +1,36 @@
 #include <stdio.h>
+int fmax(int x, int y)
+{
+    if (x > y)
+    {
+        return x;
+    }
+    return y;
+}
+int fmin(int x, int y)
+{
+    if (x < y)
+    {
+        return x;
+    }
+    return y;
+}
+int fabs(int x)
+{
+    if (x < 0)
+    {
+        return -1 * x;
+    }
+    return x;
+}
+int fma(int x, int y, int z)
+{
+    return x * y + z;
+}
 int main()
 {
-    int numRows = 0;
-    printf("Enter the number of rows: ");
-    scanf("%d", &numRows);
-    printf("\n");
-    for (int i = 1; i <= numRows; ++i)
-    {
-        for (int k = 1; k <= i; ++k)
-        {
-            printf(" ");
-        }
-        for (int j = 1; j <= ((numRows * 2) - ((2 * i) - 1)); ++j)
-        {
-            if (i == 1 || j == 1 || j == ((numRows * 2) - ((2 * i) - 1)))
-            {
-                printf("*");
-            }
-            else
-            {
-                printf(" ");
-            }
-        }
-        printf("\n");
-    }
-    return 0;
+    printf("fmax(4,5): %d\n", fmax(4, 5));
+    printf("fmin(4,5): %d\n", fmin(4, 5));
+    printf("fabs(-4): %d\n", fabs(-4));
+    printf("fma(4,5,6): %d\n", fma(4, 5, 6));
 }

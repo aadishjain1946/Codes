@@ -1,21 +1,14 @@
 #include <iostream>
 using namespace std;
+void convertMinutesToHours(float minutes)
+{
+    float hours = minutes / 60;
+    cout << minutes << " minutes to " << hours << " hours\n";
+}
 int main()
 {
-    string referenceStr = "abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcba";
-    cout << "Enter a letter: ";
-    char inputCh;
-    cin >> inputCh;
-    cout << "Output: ";
-    bool isFound = false;
-    for (int i = 0; i < referenceStr.length(); i++)
-    {
-        if (!isFound)
-            cout << referenceStr[i];
-
-        if (referenceStr[i] == inputCh)
-        {
-            isFound = !isFound;
-        }
-    }
+    int n;
+    cin>>n;
+    cout<<n%10;
+    return 0;
 }

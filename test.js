@@ -1,20 +1,5 @@
-var matrix = []
-n = 3
-m = 3
-for (let i = 0; i < n; i++) {
-    matrix[i] = [];
-    for (let j = 0; j < m; j++) {
-        matrix[i][j] = prompt('Enter a value for the cell ' + i + 'x' + j);
-    }
+const checkDate = function (date) {
+    return (new Date(date) !== "Invalid Date") && !isNaN(new Date(date));
 }
-console.log("The matrix is: ")
-console.log(matrix)
-isDiagonal = true
-for (let i = 0; i < n; i++) {
-    for (let j = 0; j < m; j++) {
-        if (i != j && matrix[i][j] != 0) {
-            isDiagonal = false;
-        }
-    }
-}
-console.log("The given matrix is diagonal? " + isDiagonal)
+var dat = new Date("2012/2/30");
+console.log(checkDate(dat));
