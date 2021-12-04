@@ -1,25 +1,61 @@
 #include <iostream>
-#include "license.h"
+#include <vector>
+#include <set>
 using namespace std;
+void print(vector<int> a)
+{
+    for (int i = 0; i < a.size(); i++)
+    {
+        cout << a[i] << " ";
+    }
+}
+void calculateUnion(vector<int> a, set<int> &numbers)
+{
+    for (int i = 0; i < a.size(); i++)
+    {
+        numbers.insert(a[i]);
+    }
+}
 int main()
 {
-    license l1;
-    cout << "What is the person's first name: ";
-    cin >> l1.firstName;
-    cout << "What is the person's last name: ";
-    cin >> l1.lastName;
-    cin.ignore();
-    cout << "What is their address: ";
-    getline(cin, l1.address);
-    cout << "What is the city: ";
-    getline(cin, l1.city);
-    cout << "What is the state: ";
-    getline(cin, l1.state);
-    cout << "What is the zip code: ";
-    cin >> l1.zipCode;
-    cout << "What is the driver license number: ";
-    cin >> l1.licenseNumber;
-    cout << '\n';
-    l1.print();
+    vector<int> a, b, c;
+    set<int> numbers;
+    //creating set
+    for (int i = 0; i < 50; i++)
+    {
+        if (i % 3 == 0)
+        {
+            a.push_back(i);
+        }
+    }
+    for (int i = 0; i < 40; i++)
+    {
+        if (i % 4 == 0)
+        {
+            b.push_back(i);
+        }
+    }
+    for (int i = 0; i < 45; i++)
+    {
+        if (i % 6 == 0)
+        {
+            c.push_back(i);
+        }
+    }
+    cout << "Set A: ";
+    print(a);
+    cout << "\nSet B: ";
+    print(b);
+    cout << "\nSet C: ";
+    print(c);
+    //a) AUBUC
+    calculateUnion(a, numbers);
+    calculateUnion(b, numbers);
+    calculateUnion(c, numbers);
+    cout << "\na) AUBUC: ";
+    for (auto i : numbers)
+    {
+        cout << i << " ";
+    }
     return 0;
 }
