@@ -2,60 +2,31 @@
 #include <vector>
 #include <set>
 using namespace std;
-void print(vector<int> a)
+void unknown(char *s1, char *s2)
 {
-    for (int i = 0; i < a.size(); i++)
+    int i = 1;
+    while ((*s1) != '\0')
     {
-        cout << a[i] << " ";
-    }
-}
-void calculateUnion(vector<int> a, set<int> &numbers)
-{
-    for (int i = 0; i < a.size(); i++)
-    {
-        numbers.insert(a[i]);
+        if (i % 2 != 0)
+        {
+            *s2 = *s1;
+            s1++;
+            s2++;
+        }
+        else
+        {
+            s1++;
+        }
+        i++;
     }
 }
 int main()
 {
-    vector<int> a, b, c;
-    set<int> numbers;
-    //creating set
-    for (int i = 0; i < 50; i++)
-    {
-        if (i % 3 == 0)
-        {
-            a.push_back(i);
-        }
-    }
-    for (int i = 0; i < 40; i++)
-    {
-        if (i % 4 == 0)
-        {
-            b.push_back(i);
-        }
-    }
-    for (int i = 0; i < 45; i++)
-    {
-        if (i % 6 == 0)
-        {
-            c.push_back(i);
-        }
-    }
-    cout << "Set A: ";
-    print(a);
-    cout << "\nSet B: ";
-    print(b);
-    cout << "\nSet C: ";
-    print(c);
-    //a) AUBUC
-    calculateUnion(a, numbers);
-    calculateUnion(b, numbers);
-    calculateUnion(c, numbers);
-    cout << "\na) AUBUC: ";
-    for (auto i : numbers)
-    {
-        cout << i << " ";
-    }
+    char string1[] = " NOFLEXX425 ";
+    char string2[100];
+    unknown(string1, string2);
+    puts(string1);
+    puts(string2);
+
     return 0;
 }

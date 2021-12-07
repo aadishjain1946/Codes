@@ -1,31 +1,56 @@
 #include <stdio.h>
-#include <stdbool.h>
-#define MAX_SIZE 100
-int main()
+int multiplyBitwise(int num1, int num2)
 {
-    int array[MAX_SIZE];
-    int i;
-    int N;
-    int maxElement = -1;
-    scanf("%d", &N);
-    for (i = 0; i < N; i++)
+    int output = 0;
+    while (num2 > 0)
     {
-        scanf("%d", &array[i]);
+        if (num2 & 1)
+        {
+            output += num1;
+        }
+        num1 = num1 << 1;
+        num2 = num2 >> 1;
+    }
+    return output;
+}
+int divideBitwise(int divi, int dor, int dorMain, int *rem)
+{
+    int output = 1;
+    if (divi == dor)
+    {
+        *rem = 0;
+        return 1;
+    }
+    else if (divi < dor)
+    {
+        *rem = divi;
+        return 0;
     }
 
-    for (i = 0; i < N; i++)
+    while (dor <= divi)
     {
-        if (array[i] % 3 == 0)
-        {
-            if (maxElement < array[i])
-            {
-                maxElement = array[i];
-            }
-        }
+        dor = dor << 1;
+        output = output << 1;
     }
-    if (maxElement > 0)
-        printf("The largest value divisible by 3 is %d", maxElement);
-    else
-        printf("No value in the array is divisible by 3");
+
+    if (divi < dor)
+    {
+        dor >>= 1;
+        output >>= 1;
+    }
+
+    output = output + divideBitwise(divi - dor, dorMain, dorMain, rem);
+
+    return output;
+}
+int main()
+{
+    int rem = 0;
+    printf("multiplyBitwise(75, 4) = %d\n", multiplyBitwise(75, 4));
+    printf("multiplyBitwise(90, 9) = %d\n", multiplyBitwise(90, 9));
+    printf("multiplyBitwise(83, 66) = %d\n", multiplyBitwise(83, 66));
+    printf("divideBitwise(75, 4) = %d\n", divideBitwise(75, 4, 4, &rem));
+    printf("divideBitwise(90, 9) = %d\n", divideBitwise(90, 9, 9, &rem));
+    printf("divideBitwise(83, 66) = %d\n", divideBitwise(83, 66, 66, &rem));
     return 0;
 }
