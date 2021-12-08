@@ -1,32 +1,41 @@
 #include <iostream>
-#include <vector>
-#include <set>
+#include <string>
 using namespace std;
-void unknown(char *s1, char *s2)
+int main()
 {
-    int i = 1;
-    while ((*s1) != '\0')
+    string input;
+    cout << "Enter text: ";
+    getline(cin, input);
+    string output = "";
+    string word = "";
+    int i = 0;
+    for (; i < input.length(); i++)
     {
-        if (i % 2 != 0)
+        if (!isalnum(input[i]))
         {
-            *s2 = *s1;
-            s1++;
-            s2++;
+            if (word[0] == toupper(word[0]))
+            {
+                output += word + input[i];
+            }
+            else
+            {
+                output += input[i];
+            }
+            word = "";
         }
         else
         {
-            s1++;
+            word += input[i];
         }
-        i++;
     }
-}
-int main()
-{
-    char string1[] = " NOFLEXX425 ";
-    char string2[100];
-    unknown(string1, string2);
-    puts(string1);
-    puts(string2);
-
+    if (word[0] == toupper(word[0]))
+    {
+        output += word + input[i];
+    }
+    else
+    {
+        output += input[i];
+    }
+    cout << "Output: " << output << '\n';
     return 0;
 }
