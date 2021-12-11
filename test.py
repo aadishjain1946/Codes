@@ -1,21 +1,21 @@
-import time
-
-
-def fibonacci(num):
-    if num == 0:
-        return 0
-    if num == 1:
-        return 1
-    return fibonacci(num - 1) + fibonacci(num - 2)
+import math
 
 
 def main():
-    num = int(input("Enter the nth value: "))
-    start = time.perf_counter()
-    fib = fibonacci(num)
-    end = time.perf_counter()
-    print("Output: ", fib)
-    print(f"Fibonacci finished in {end - start:0.10f} seconds")
+    answerA = pow(-19 + 100, 1 / 4)
+    print("Answer a: ", answerA, "\n")
+    m = int(input("Enter m: "))
+    A0 = int(input("Enter A0: "))
+    A = [int(i) for i in input("Enter A: ").split(" ")]
+    B = [int(i) for i in input("Enter B: ").split(" ")]
+    x = int(input("Enter x: "))
+    l = int(input("Enter l: "))
+    answerB = A0
+    for i in range(m):
+        answerB = A[i] * math.cos((math.pi * i * x) / l) + B[i] * math.sin(
+            (math.pi * i * x) / l)
+    print("\nAnswer b: ", answerB)
 
 
-main()
+if __name__ == "__main__":
+    main()

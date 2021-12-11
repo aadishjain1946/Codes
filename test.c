@@ -1,18 +1,14 @@
 #include <stdio.h>
-char getLast(char *input)
-{
-    char lastChar;
-    for (int i = 0; input[i] != '\0'; i++)
-    {
-        lastChar = input[i];
-    }
-    return lastChar;
-}
 int main()
 {
-    char input[100];
-    printf("Enter a string: ");
-    scanf("%s", input);
-    printf("Output: %c", getLast(input));
+    int salary, numberOfWorkingDays, numberOfWorkingHours, payPerHour;
+    printf("Enter the number of working days: ");
+    scanf("%d", &numberOfWorkingDays);
+    printf("Enter the number of working hours per days: ");
+    scanf("%d", &numberOfWorkingHours);
+    printf("Pay per hours: $");
+    scanf("%d", &payPerHour);
+    salary = numberOfWorkingDays * numberOfWorkingHours * payPerHour;
+    printf("Total salary: $%d", salary);
     return 0;
 }

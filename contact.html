@@ -3,114 +3,23 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merry Christmas</title>
+    <title>Document</title>
     <style>
-        body {
-            margin: 0px;
-            padding: 0px;
-        }
-
-        .container {
-            margin: 0px 10%;
-        }
-
-        .flex {
-            display: flex;
-        }
-
-        .header {
-            background-color: #740E05;
-            color: white;
-        }
-
-        .navcont {
-            justify-content: space-between;
-        }
-
-        .hd1 {
-            width: 70%;
-        }
-
-        .hd2 {
-            width: 30%;
-        }
-
-        a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .contactfrm {
-            width: 100%;
+        .para {
             text-align: center;
-        }
-
-        .contactfrm form {
-            display: inline-block;
-            padding: 25px;
-            border: 3px solid #740E05;
-            width: 50%;
-            border-radius: 25px;
+            width: 400px;
         }
     </style>
 </head>
 
 <body>
-    <div id="container">
-        <a href="" target=""></a>
-        <div class="header">
-            <div>
-                <div class="container">
-                    <div class="flex headcont">
-                        <div class="hd1">
-                            <h3>Merry Christmas</h3>
-                        </div>
-                        <div class="flex navcont hd2">
-                            <div>
-                                <h4><a href="./index.html">Home</a></h4>
-                            </div>
-                            <div>
-                                <h4><a href="./about.html">About</a></h4>
-                            </div>
-                            <div>
-                                <h4><a href="./contact.html">Contact</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <br>
-        <div class="container content">
-            <div class="contactfrm">
-                <h1>Contact us</h1>
-                <form>
-                    <label for="name">Name : </label>
-                    <input type="text" id="name">
-                    <br>
-                    <br>
-                    <label for="email">Email : </label>
-                    <input type="email">
-                    <br>
-                    <br>
-                    <label for="phone">Phone : </label>
-                    <input type="tel" id="phone">
-                    <br>
-                    <br>
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <script>
-        const pEle = document.createElement("p");
-        const data = document.createTextNode("This is a sample P Element.");
-        pEle.appendChild(data);
-        document.appendChild(pEle);
-        document.appendChild(currentElm);
-    </script>
+    <h4 class="para">Sample Paragraph</h4>
+    <p class="para">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat facere aliquam pariatur sit ab
+        neque
+        cupiditate molestias possimus incidunt vel eveniet saepe hic, nihil quibusdam sed, veritatis, sequi in dolores?
+    </p>
 </body>
 
 </html>

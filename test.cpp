@@ -1,41 +1,27 @@
 #include <iostream>
-#include <string>
+#include <math.h>
 using namespace std;
 int main()
 {
-    string input;
-    cout << "Enter text: ";
-    getline(cin, input);
-    string output = "";
-    string word = "";
-    int i = 0;
-    for (; i < input.length(); i++)
+    int size = 100;
+    double arr[size];
+    for (int i = 0; i < size; i++)
     {
-        if (!isalnum(input[i]))
-        {
-            if (word[0] == toupper(word[0]))
-            {
-                output += word + input[i];
-            }
-            else
-            {
-                output += input[i];
-            }
-            word = "";
-        }
-        else
-        {
-            word += input[i];
-        }
+        arr[i] = i;
     }
-    if (word[0] == toupper(word[0]))
+    double meanOfElements = 0;
+    for (int i = 0; i < size; i++)
     {
-        output += word + input[i];
+        meanOfElements += arr[i];
     }
-    else
+    meanOfElements /= size;
+    double standardDeviationOfElements = 0;
+    for (int i = 0; i < size; i++)
     {
-        output += input[i];
+        standardDeviationOfElements += (arr[i] - meanOfElements) * (arr[i] - meanOfElements);
     }
-    cout << "Output: " << output << '\n';
+    standardDeviationOfElements = sqrt(standardDeviationOfElements);
+    cout << "Mean: " << meanOfElements << " "
+         << "Standard Deviation: " << standardDeviationOfElements << '\n';
     return 0;
 }
