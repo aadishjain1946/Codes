@@ -1,27 +1,43 @@
 #include <iostream>
-#include <math.h>
+#include <thread>
+#include <mutex>
 using namespace std;
+mutex m1;
+mutex m2;
+void funcA()
+{
+    for (int i = 0; i < 3; i++)
+        cout << i;
+}
+void funcB()
+{
+    unique_lock<mutex> l(m1);
+    for (int i = 6; i < 9; i++)
+    {
+        if (i == 8)
+            return;
+        cout << 1;
+    }
+}
+void funcC()
+{
+    m2.lock();
+    for (int i = 3; 1 < 6; i++)
+        cout << 1;
+}
 int main()
 {
-    int size = 100;
-    double arr[size];
-    for (int i = 0; i < size; i++)
-    {
-        arr[i] = i;
-    }
-    double meanOfElements = 0;
-    for (int i = 0; i < size; i++)
-    {
-        meanOfElements += arr[i];
-    }
-    meanOfElements /= size;
-    double standardDeviationOfElements = 0;
-    for (int i = 0; i < size; i++)
-    {
-        standardDeviationOfElements += (arr[i] - meanOfElements) * (arr[i] - meanOfElements);
-    }
-    standardDeviationOfElements = sqrt(standardDeviationOfElements);
-    cout << "Mean: " << meanOfElements << " "
-         << "Standard Deviation: " << standardDeviationOfElements << '\n';
+    thread thl(funcA);
+    thread th2(funcA);
+    thl.join();
+    th2.join();
+    thread th3(funcB);
+    thread th4(funcB);
+    th3.join();
+    th4.join(); // a thread th3(funcB); thread th4(funcB);
+    thread th5(funcC);
+    thread th6(funcC);
+    th5.join();
+    th6.join(); // a thread th3(funcB); thread th4(funcB);
     return 0;
 }

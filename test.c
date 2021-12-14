@@ -1,14 +1,15 @@
 #include <stdio.h>
 int main()
 {
-    int salary, numberOfWorkingDays, numberOfWorkingHours, payPerHour;
-    printf("Enter the number of working days: ");
-    scanf("%d", &numberOfWorkingDays);
-    printf("Enter the number of working hours per days: ");
-    scanf("%d", &numberOfWorkingHours);
-    printf("Pay per hours: $");
-    scanf("%d", &payPerHour);
-    salary = numberOfWorkingDays * numberOfWorkingHours * payPerHour;
-    printf("Total salary: $%d", salary);
+    int a = -10, b = 20;
+    if (a > 0 && b < 0)
+        a++;
+    else if (a < 0 && b < 0)
+        a--;
+    else if (a < 0 && b > 0)
+        b--;
+    else
+        b--;
+    printf("%d\n", a + b);
     return 0;
 }
