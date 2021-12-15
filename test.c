@@ -1,15 +1,13 @@
 #include <stdio.h>
 int main()
 {
-    int a = -10, b = 20;
-    if (a > 0 && b < 0)
-        a++;
-    else if (a < 0 && b < 0)
-        a--;
-    else if (a < 0 && b > 0)
-        b--;
-    else
-        b--;
-    printf("%d\n", a + b);
+    int n;
+    scanf("%d", &n);
+    int output = 1;
+    for (int i = 1; i <= n; i++)
+    {
+        output *= i;
+    }
+    printf("%d\n", output);
     return 0;
 }
