@@ -1,21 +1,40 @@
-import math
+def hopskangaroo(arr):
+
+    if len(arr) <= 1:
+        return 0
+
+    if arr[0] == 0:
+        return (0, 0)
+
+    maxKangarooJump = arr[0]
+    stepCount = arr[0]
+    output = []
+    output.append(0)
+    jumpCount = 1
+
+    for i in range(1, len(arr)):
+
+        if i == len(arr) - 1:
+            return (jumpCount, output)
+
+        if maxKangarooJump < i + arr[i]:
+            maxKangarooJump = i + arr[i]
+
+        stepCount -= 1
+
+        if stepCount == 0:
+            jumpCount += 1
+            output.append(i)
+            if i >= maxKangarooJump:
+                return (0, 0)
+
+            stepCount = maxKangarooJump - i
+
+    return (0, 0)
 
 
-def main():
-    answerA = pow(-19 + 100, 1 / 4)
-    print("Answer a: ", answerA, "\n")
-    m = int(input("Enter m: "))
-    A0 = int(input("Enter A0: "))
-    A = [int(i) for i in input("Enter A: ").split(" ")]
-    B = [int(i) for i in input("Enter B: ").split(" ")]
-    x = int(input("Enter x: "))
-    l = int(input("Enter l: "))
-    answerB = A0
-    for i in range(m):
-        answerB = A[i] * math.cos((math.pi * i * x) / l) + B[i] * math.sin(
-            (math.pi * i * x) / l)
-    print("\nAnswer b: ", answerB)
-
-
-if __name__ == "__main__":
-    main()
+n = int(input("Input length: "))
+arr = [int(i) for i in input("Input array: ").split(" ")]
+jumps, output = hopskangaroo(arr)
+print("Number of hops: ", jumps)
+print("Indexes: ", output)
