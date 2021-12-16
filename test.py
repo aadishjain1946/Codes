@@ -1,40 +1,36 @@
-def hopskangaroo(arr):
-
-    if len(arr) <= 1:
-        return 0
-
-    if arr[0] == 0:
-        return (0, 0)
-
-    maxKangarooJump = arr[0]
-    stepCount = arr[0]
-    output = []
-    output.append(0)
-    jumpCount = 1
-
-    for i in range(1, len(arr)):
-
-        if i == len(arr) - 1:
-            return (jumpCount, output)
-
-        if maxKangarooJump < i + arr[i]:
-            maxKangarooJump = i + arr[i]
-
-        stepCount -= 1
-
-        if stepCount == 0:
-            jumpCount += 1
-            output.append(i)
-            if i >= maxKangarooJump:
-                return (0, 0)
-
-            stepCount = maxKangarooJump - i
-
-    return (0, 0)
+operators = ["+", "-", "*", "/"]
 
 
-n = int(input("Input length: "))
-arr = [int(i) for i in input("Input array: ").split(" ")]
-jumps, output = hopskangaroo(arr)
-print("Number of hops: ", jumps)
-print("Indexes: ", output)
+def validatExpression(inputExp):
+    exp = []
+    countOp = 0
+    countEx = 0
+    for i in range(len(inputExp)):
+        if len(exp) == 0 or inputExp[i] not in operators:
+            if len(exp) == 0 or exp[-1] in operators:
+                exp.append(inputExp[i])
+                countEx += 1
+            else:
+                return False
+        elif len(exp) != 0 and inputExp[i] in operators:
+            if len(exp) != 0 and exp[-1] in operators:
+                return False
+            else:
+                exp.append(inputExp[i])
+                countOp += 1
+    if countEx > countOp:
+        return True
+    else:
+        return False
+
+
+def main():
+    inputExp = input()
+    isvalid = validatExpression(inputExp)
+    if isvalid == False:
+        print(inputExp, "is a mathematical false expression.")
+    else:
+        print(inputExp, "is a mathematical true expression.")
+
+
+main()

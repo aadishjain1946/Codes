@@ -1,35 +1,30 @@
 import java.util.*;
 public class test
 {
-    public static class PalindromeChecker{
-        Stack<Character> myStack;
-        Queue<Character> myQueue;
-
-        public boolean isPalindrome(String line){
-            myStack = new Stack<Character>();
-            myQueue = new LinkedList<Character>();
-            line = line.toLowerCase(); 
-            for(int i = 0;i<line.length();i++){
-                myStack.push(line.charAt(i));
-                myQueue.add(line.charAt(i));
-            }
-            while(!myStack.empty() && !myQueue.isEmpty()){
-                if(myStack.peek() != myQueue.peek()){
-                    return false;
-                }
-                myQueue.remove();
-                myStack.pop();
-            }
-            return true;
-        }
-    }
 	public static void main(String[] args) {
-        PalindromeChecker P1 = new PalindromeChecker();
-        String str1 = "aabaa";
-        String str2 = "aagbcbsaa";
-        String str3 = "aabghgbaa";
-        System.out.println("Is String "+str1 + " palindrome? "+P1.isPalindrome(str1));
-        System.out.println("Is String "+str2 + " palindrome? "+P1.isPalindrome(str2));
-        System.out.println("Is String "+str3 + " palindrome? "+P1.isPalindrome(str3));
+        HashSet<String> mySet = new HashSet(); 
+        String input;
+        Scanner scnObj = new Scanner(System.in);
+        System.out.println("Add a name to set, use end to terminate input: ");
+        input = scnObj.nextLine();
+        while(input.compareTo("end") != 0){
+            mySet.add(input);
+            System.out.println(input + " inserted.");
+            System.out.println("Add a name to set, use end to terminate input: ");
+            input = scnObj.nextLine();
+        }
+
+        String search;
+        System.out.println("Search a name, use end to terminate searching: ");
+        search = scnObj.nextLine();
+        while(search.compareTo("end") != 0){
+            if(mySet.contains(search)){
+               System.out.println(search + " found in set.");
+            }else{
+                System.out.println(search + " not found in set.");
+            }
+            System.out.println("Search a name, use end to terminate searching: ");
+            search = scnObj.nextLine();
+        }
     }
 }
