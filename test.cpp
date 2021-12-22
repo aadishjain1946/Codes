@@ -1,71 +1,19 @@
 #include <iostream>
 using namespace std;
-class node
-{
-public:
-    int data;
-    node *next;
-    node(int data)
-    {
-        this->data = data;
-        this->next = NULL;
-    }
-};
-node *insert(node *head, int data, int index)
-{
-    if (index == 0)
-    {
-        node *newNode = new node(data);
-        newNode->next = head;
-        return newNode;
-    }
-    if (head == NULL)
-    {
-        node *newNode = new node(data);
-        return newNode;
-    }
-    head->next = insert(head->next, data, index - 1);
-    return head;
-}
-node *deleteData(node *head, int data)
-{
-    if (head == NULL)
-    {
-        return NULL;
-    }
-    if (head->data == data)
-    {
-        return head->next;
-    }
-    head->next = deleteData(head->next, data);
-    return head;
-}
-void print(node *head)
-{
-    node *temp = head;
-    while (temp != NULL)
-    {
-        cout << temp->data << " ";
-        temp = temp->next;
-    }
-    cout << '\n';
-}
 int main()
 {
-    node *head = new node(10);
-    head->next = new node(20);
-    head->next->next = new node(30);
-    head->next->next->next = new node(40);
-    cout << "Linked List: ";
-    print(head);
-    head = insert(head, 50, 2);
-    cout << "Linked List: ";
-    print(head);
-    head = insert(head, 60, 3);
-    cout << "Linked List: ";
-    print(head);
-    head = deleteData(head, 50);
-    cout << "Linked List: ";
-    print(head);
+    int n1, n2, n3, n4;
+    cout << "Enter 4 numbers: ";
+    cin >> n1 >> n2 >> n3 >> n4;
+    int sum = n1 + n2 + n3 + n4;
+    int diff = n1 - n2 - n3 - n4;
+    int product = n1 * n2 * n3 * n4;
+    int quotient = n1 / n2;
+    quotient /= n3;
+    quotient /= n4;
+    cout << "Sum of 4 numbers: " << sum << '\n';
+    cout << "Difference of 4 numbers: " << diff << '\n';
+    cout << "Product of 4 numbers: " << product << '\n';
+    cout << "Quotient of 4 numbers: " << quotient << '\n';
     return 0;
 }
