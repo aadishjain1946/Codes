@@ -2,34 +2,32 @@
 #include <stdlib.h>
 int main()
 {
-    int n = 10000;
-    int arr[n];
-    for (int i = 0; i < n; i++)
+    char keyInput[100], textInput[100];
+    int j = 0;
+    printf("Enter the key Input: ");
+    scanf("%s", keyInput);
+    printf("Enter the Text Input: ");
+    scanf("%s", textInput);
+    for (int index = 0; keyInput[index] != '\0'; index++)
     {
-        arr[i] = (rand() % (30 - 1 + 1)) + 1;
-    }
-    printf("Array before sorting: ");
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", arr[i]);
+        printf("%c\t", keyInput[index]);
     }
     printf("\n");
-    for (int i = 0; i < n; i++)
+    for (int index = 0; textInput[index] != '\0'; j++)
     {
-        for (int j = i + 1; j < n; j++)
+        if (keyInput[j] == '2')
         {
-            if (arr[i] > arr[j])
-            {
-                int sudo = arr[i];
-                arr[i] = arr[j];
-                arr[j] = sudo;
-            }
+            printf("%c%c\t", textInput[index], textInput[index + 1]);
+            index++;
+            index++;
         }
-    }
-    printf("Array after sorting: ");
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", arr[i]);
+        else
+        {
+            printf("%c%c%c\t", textInput[index], textInput[index + 1], textInput[index + 2]);
+            index++;
+            index++;
+            index++;
+        }
     }
     return 0;
 }
