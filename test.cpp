@@ -1,47 +1,30 @@
 #include <iostream>
 using namespace std;
-struct paints
+void printEvenAndSum(int num, int &sum)
 {
-    int id, weight, price;
-    string name;
-};
-void printPaints(struct paints f)
-{
-    cout << "Id: " << f.id << "\n";
-    cout << "name: " << f.name << "\n";
-    cout << "weight: " << f.weight << "\n";
-    cout << "price: " << f.price << "\n";
-}
-void printHighighestWeightedPaints(struct paints f[], int n)
-{
-    int minIndex = -1, minWeight = -1;
-    for (int i = 0; i < n; i++)
+    if (num % 2 == 0)
     {
-        if (minWeight < f[i].weight)
-        {
-            minIndex = i;
-            minWeight = f[i].weight;
-        }
+        goto Even;
     }
-    printPaints(f[minIndex]);
+    else
+    {
+        return;
+    }
+Even:
+    cout << num << " ";
+    sum += num;
 }
 int main()
 {
-    struct paints f[4];
-    cout << "Enter values for 4 paints:\n";
-    for (int i = 0; i < 4; i++)
+    int n;
+    cout << "Enter an integer: ";
+    cin >> n;
+    int sum = 0;
+    cout << "Even natural number: ";
+    for (int i = 0; i < n; i++)
     {
-        cout << "\nEnter " << i + 1 << " furniture.\n";
-        cout << "Enter Id: ";
-        cin >> f[i].id;
-        cout << "Enter name: ";
-        cin >> f[i].name;
-        cout << "Enter weight: ";
-        cin >> f[i].weight;
-        cout << "Enter price: ";
-        cin >> f[i].price;
+        printEvenAndSum(i, sum);
     }
-    cout << "\nHighest weighted furniture: \n";
-    printHighighestWeightedPaints(f, 4);
+    cout << "\nSum of even natural number: " << sum << '\n';
     return 0;
 }
