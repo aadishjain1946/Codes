@@ -1,10 +1,21 @@
 import java.util.*;
-public class test
-{
-	public static void main(String[] args) {
-        Scanner scnObj = new Scanner(System.in);
-        System.out.print("Please enter a ten-digit phone number: ");
-        String number = scnObj.nextLine();
-        System.out.println("(" + number.substring(0,3) + ") " + number.substring(3,6) + "-" + number.substring(6,10));
-    }
-}
+abstract class Calculate  
+{  
+    abstract int multiply(int a, int b);  
+}  
+   
+public class test  
+{  
+    public static void main(String[] args)  
+    {  
+        int result = new Calculate()  
+        {      
+            @Override  
+            int multiply(int a, int b)  
+            {  
+                return a*b;  
+            }  
+        }.multiply(12,32);  
+        System.out.println("result = "+result);  
+    }  
+}  
