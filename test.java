@@ -1,21 +1,16 @@
 import java.util.*;
-abstract class Calculate  
-{  
-    abstract int multiply(int a, int b);  
-}  
-   
 public class test  
 {  
     public static void main(String[] args)  
     {  
-        int result = new Calculate()  
-        {      
-            @Override  
-            int multiply(int a, int b)  
-            {  
-                return a*b;  
-            }  
-        }.multiply(12,32);  
-        System.out.println("result = "+result);  
+        Scanner scnObj = new Scanner(System.in);
+        int n = scnObj.nextInt();
+        ArrayList<Integer> arr = new ArrayList<>(n);
+        for(int i = 0;i<n;i++){
+            arr.add(scnObj.nextInt());
+        }
+        for(int i = arr.size() - 1;i>=0;i--){
+            System.out.println(arr.get(i));
+        }
     }  
 }  
