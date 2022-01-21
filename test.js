@@ -1,11 +1,11 @@
-`
-SELECT
-    t1.FirstName, t1.LastName
-FROM
-    Table_Employee t1
-JOIN
-    Table_Order t2
-    ON(t1.EmployeeID = t2.EmployeeID)
-WHERE
-    t2.OrderQty > 10
-`
+output = ""
+str1 = "Javascript"
+repeat = 3
+
+for (let i = 0; i < str1.length; i++) {
+    for (let j = 0; j < repeat; j++) {
+        output += str1[i]
+    }
+}
+
+console.log(output);

@@ -2,57 +2,29 @@
 using namespace std;
 int main()
 {
-    int n, m;
-    cout << "Enter size of matrix(N X M): ";
-    cin >> n >> m;
-    int mat1[n][m], mat2[n][m], add[n][m], subt[n][m];
-    cout << "Enter matrix 1 elements: \n";
-    for (int i = 0; i < n; i++)
+    int n1, n2;
+    cout << "Enter two natural number n1 and n2: ";
+    cin >> n1 >> n2;
+    int count = 0;
+    for (int i = n1; i <= n2; i++)
     {
-        for (int j = 0; j < m; j++)
+        bool flag = true;
+        if (i <= 1)
         {
-            cin >> mat1[i][j];
+            flag = false;
+        }
+        for (int j = 2; j < i; j++)
+        {
+            if (i % j == 0)
+            {
+                flag = false;
+            }
+        }
+        if (flag)
+        {
+            count++;
         }
     }
-    cout << "Enter matrix 2 elements: \n";
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            cin >> mat2[i][j];
-        }
-    }
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            add[i][j] = mat1[i][j] + mat2[i][j];
-        }
-    }
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            subt[i][j] = mat1[i][j] - mat2[i][j];
-        }
-    }
-    cout << "Addition of two matrix: \n";
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            cout << add[i][j] << " ";
-        }
-        cout << '\n';
-    }
-    cout << "Subtraction of two matrix: \n";
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            cout << subt[i][j] << " ";
-        }
-        cout << '\n';
-    }
+    cout << "Number of primes between " << n1 << " and " << n2 << " are " << count << '\n';
     return 0;
 }
