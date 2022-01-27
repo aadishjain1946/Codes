@@ -1,28 +1,18 @@
 #include <stdio.h>
-int pow(int n, int m)
-{
-    int output = 1;
-    for (int i = 0; i < m; i++)
-    {
-        output *= n;
-    }
-    return output;
-}
 int main()
 {
-    int n;
-    scanf("%d", &n);
-    int x, a[n];
-    scanf("%d", &x);
-    for (int i = 0; i < n; i++)
+    FILE *fileObj = fopen("output.txt", "w");
+    if (fileObj == NULL)
     {
-        scanf("%d", &a[i]);
+        printf("Cannot open file");
+        return 0;
     }
-    int output = 0;
-    for (int i = 0; i < n; i++)
+    int index = 1, sum = 0;
+    while (index <= 10)
     {
-        output += (a[i] * pow(x, i));
+        sum += index;
+        index++;
     }
-    printf("%d", output);
+    fprintf(fileObj, "Sum of integers between 1,10: %d\n", sum);
     return 0;
 }

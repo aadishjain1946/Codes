@@ -1,7 +1,5 @@
 strInput = input("Enter a string: ")
-word = input("Enter a word: ")
-
-if word.lower() in strInput.lower():
-    print(True)
-else:
-    print(False)
+words = strInput.split('+')
+print("Words in the given string is", end=" ")
+for i in words:
+    print(i, end=" ")
