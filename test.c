@@ -1,18 +1,32 @@
 #include <stdio.h>
 int main()
 {
-    FILE *fileObj = fopen("output.txt", "w");
-    if (fileObj == NULL)
+    int num;
+    int arr[100000];
+    printf("Input: ");
+    scanf("%d", &num);
+    int flag = 0;
+    printf("Output: ");
+    int sz = 0;
+    while (num > 0)
     {
-        printf("Cannot open file");
-        return 0;
+        if ((num % 10) > 3)
+        {
+            arr[sz++] = num % 10;
+            flag = 1;
+        }
+        num /= 10;
     }
-    int index = 1, sum = 0;
-    while (index <= 10)
+    if (flag == 0)
     {
-        sum += index;
-        index++;
+        printf("none");
     }
-    fprintf(fileObj, "Sum of integers between 1,10: %d\n", sum);
+    else
+    {
+        for (int i = sz - 1; i >= 0; i--)
+        {
+            printf("%d ", arr[i]);
+        }
+    }
     return 0;
 }
