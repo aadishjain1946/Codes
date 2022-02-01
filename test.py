@@ -1,29 +1,34 @@
-print("--Welcome to Assignments Systems--")
-print("--Enter All Your Assignment Mark--")
-print("Then It will Display Min, Max, Average, Value and Sum --")
-print("\n")
-arr = []
-for i in range(6):
-    arr.append(int(input()))
+from cmath import sqrt
 
-lowestScore = 999999
-highestScore = 0
-averageScore = 0
-sumScore = 0
 
-for i in range(6):
-    if arr[i] < lowestScore:
-        lowestScore = arr[i]
-    if arr[i] > highestScore:
-        highestScore = arr[i]
-    averageScore += arr[i]
-    sumScore += arr[i]
+class quadrilateral:
+    def __init__(self):
+        self.points = [(0, 0), (0, 0), (0, 0), (0, 0)]
 
-averageScore /= 6
+    def setPoints(self, i, point):
+        self.points[i] = point
 
-print("The lowest score is:", lowestScore)
-print("The highest score is:", highestScore)
-print("Average score is:", averageScore)
-print("Sum score is:", sumScore)
+    def getPoints(self, i):
+        return self.points[i]
 
-print("--Thank You For Using This Program--")
+    def distanceTwoPoint(self, i, j):
+        distance = sqrt((self.points[i][0] - self.points[j][0])**2 +
+                        (self.points[i][1] - self.points[j][1])**2)
+        return distance.real
+
+
+def main():
+    q1 = quadrilateral()
+    q1.setPoints(0, (10, 0))
+    q1.setPoints(1, (40, 0))
+    q1.setPoints(2, (0, 10))
+    q1.setPoints(3, (0, 40))
+    print("Point 1:", q1.getPoints(0))
+    print("Point 2:", q1.getPoints(1))
+    print("Point 3:", q1.getPoints(2))
+    print("Point 4:", q1.getPoints(3))
+    print("Distance between point 1 and 2:", q1.distanceTwoPoint(0, 1))
+
+
+if __name__ == "__main__":
+    main()
