@@ -1,36 +1,21 @@
 #include <iostream>
+#include <vector>
 using namespace std;
+vector<int> vecout(int num)
+{
+    vector<int> ans;
+    for (int i = 0; i <= 5; i++)
+    {
+        ans.push_back(num + i);
+    }
+    return ans;
+}
 int main()
 {
-    char cont = 'y';
-    while (cont == 'y')
+    vector<int> ans = vecout(4);
+    for (int i = 0; i < ans.size(); i++)
     {
-        string input;
-        cout << "Enter a list of integers:\n";
-        cin.ignore();
-        getline(cin, input);
-        string sudo = "";
-        int maxNum = INT_MIN, minNum = INT_MAX;
-        for (int i = 0; i < input.length(); i++)
-        {
-            if (input[i] == ' ')
-            {
-                int num = std::stoi(sudo);
-                maxNum = max(num, maxNum);
-                minNum = min(num, minNum);
-                sudo = "";
-            }
-            sudo += input[i];
-        }
-        int num = std::stoi(sudo);
-        maxNum = max(num, maxNum);
-        minNum = min(num, minNum);
-        sudo = "";
-        cout << "The max of intgers you entered is " << maxNum << '\n';
-        cout << "The min of intgers you entered is " << minNum << '\n';
-        cout << "\nContinue? (y/n)\n";
-        cin >> cont;
+        cout << ans[i] << " ";
     }
-
     return 0;
 }
