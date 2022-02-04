@@ -1,21 +1,28 @@
 #include <iostream>
-#include <vector>
+#include <math.h>
 using namespace std;
-vector<int> vecout(int num)
-{
-    vector<int> ans;
-    for (int i = 0; i <= 5; i++)
-    {
-        ans.push_back(num + i);
-    }
-    return ans;
-}
 int main()
 {
-    vector<int> ans = vecout(4);
-    for (int i = 0; i < ans.size(); i++)
+    int mat[16][3];
+    for (int i = 0; i < 16; i++)
     {
-        cout << ans[i] << " ";
+        for (int j = 0; j < 3; j++)
+        {
+            mat[i][j] = (std::rand() % (10 - 0 + 1));
+        }
     }
+    int maxI = 0;
+    double maxDistance = INT_MIN;
+    for (int i = 0; i < 16; i++)
+    {
+        double dist = sqrt(mat[i][0] * mat[i][0] + mat[i][1] * mat[i][1] + mat[i][2] * mat[i][2]);
+        if (dist > maxDistance)
+        {
+            maxDistance = dist;
+            maxI = i;
+        }
+    }
+    cout << "Maximum Distance: " << maxDistance << '\n';
+    cout << "Index of max distance: " << maxI << '\n';
     return 0;
 }
