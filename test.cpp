@@ -3,26 +3,29 @@
 using namespace std;
 int main()
 {
-    int mat[16][3];
-    for (int i = 0; i < 16; i++)
+    int temp[10];
+    cout << "Enter temprature for the last 10 days: ";
+    for (int i = 0; i < 10; i++)
     {
-        for (int j = 0; j < 3; j++)
-        {
-            mat[i][j] = (std::rand() % (10 - 0 + 1));
-        }
+        cin >> temp[i];
     }
-    int maxI = 0;
-    double maxDistance = INT_MIN;
-    for (int i = 0; i < 16; i++)
+    cout << "Entered temp in degree celcius or Fahrenheit? ";
+    char tp;
+    cin >> tp;
+    double averageTemp = 0;
+    for (int i = 0; i < 10; i++)
     {
-        double dist = sqrt(mat[i][0] * mat[i][0] + mat[i][1] * mat[i][1] + mat[i][2] * mat[i][2]);
-        if (dist > maxDistance)
-        {
-            maxDistance = dist;
-            maxI = i;
-        }
+        averageTemp += temp[i];
     }
-    cout << "Maximum Distance: " << maxDistance << '\n';
-    cout << "Index of max distance: " << maxI << '\n';
+    averageTemp /= 10;
+    if (tp == 'c')
+    {
+        cout << "Average temprature in celcius: " << averageTemp << '\n';
+    }
+    else
+    {
+        double cel = (5 / 9) * (averageTemp - 32);
+        cout << "Average temprature in celcius: " << cel << '\n';
+    }
     return 0;
 }
