@@ -1,32 +1,20 @@
 #include <stdio.h>
 int main()
 {
-    int num;
-    int arr[100000];
-    printf("Input: ");
-    scanf("%d", &num);
-    int flag = 0;
-    printf("Output: ");
-    int sz = 0;
-    while (num > 0)
+    int frequency[100000] = {0};
+    int n;
+    printf("Enter size: ");
+    scanf("%d", &n);
+    int arr[n];
+    printf("Enter Elements:\n");
+    for (int i = 0; i < n; i++)
     {
-        if ((num % 10) > 3)
-        {
-            arr[sz++] = num % 10;
-            flag = 1;
-        }
-        num /= 10;
+        scanf("%d", &arr[i]);
+        frequency[arr[i]] += 1;
     }
-    if (flag == 0)
-    {
-        printf("none");
-    }
-    else
-    {
-        for (int i = sz - 1; i >= 0; i--)
-        {
-            printf("%d ", arr[i]);
-        }
-    }
+    int ele;
+    printf("Enter certain element in the array: ");
+    scanf("%d", &ele);
+    printf("FREQUENCY: %d", frequency[ele]);
     return 0;
 }
