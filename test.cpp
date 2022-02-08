@@ -1,31 +1,30 @@
 #include <iostream>
 #include <math.h>
 using namespace std;
+void printBin(int value)
+{
+    int maxBits = 31;
+    if (value < 0)
+    {
+        cout << 1;
+        value *= -1;
+    }
+    for (int index = maxBits; index >= 0; index--)
+    {
+        int sudo = value >> index;
+        cout << (sudo & 1);
+    }
+}
 int main()
 {
-    int temp[10];
-    cout << "Enter temprature for the last 10 days: ";
-    for (int i = 0; i < 10; i++)
-    {
-        cin >> temp[i];
-    }
-    cout << "Entered temp in degree celcius or Fahrenheit? ";
-    char tp;
-    cin >> tp;
-    double averageTemp = 0;
-    for (int i = 0; i < 10; i++)
-    {
-        averageTemp += temp[i];
-    }
-    averageTemp /= 10;
-    if (tp == 'c')
-    {
-        cout << "Average temprature in celcius: " << averageTemp << '\n';
-    }
-    else
-    {
-        double cel = (5 / 9) * (averageTemp - 32);
-        cout << "Average temprature in celcius: " << cel << '\n';
-    }
+    cout << "64: ";
+    printBin(64);
+    cout << '\n';
+    cout << "0: ";
+    printBin(0);
+    cout << '\n';
+    cout << "-64: ";
+    printBin(-64);
+    cout << '\n';
     return 0;
 }
