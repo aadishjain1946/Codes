@@ -1,30 +1,18 @@
 #include <iostream>
-#include <math.h>
 using namespace std;
-void printBin(int value)
+void printTable(int num)
 {
-    int maxBits = 31;
-    if (value < 0)
+    cout << "Table " << num << '\n';
+    for (int i = 1; i <= 10; i++)
     {
-        cout << 1;
-        value *= -1;
-    }
-    for (int index = maxBits; index >= 0; index--)
-    {
-        int sudo = value >> index;
-        cout << (sudo & 1);
+        cout << num << " x " << i << " = " << num * i << '\n';
     }
 }
 int main()
 {
-    cout << "64: ";
-    printBin(64);
-    cout << '\n';
-    cout << "0: ";
-    printBin(0);
-    cout << '\n';
-    cout << "-64: ";
-    printBin(-64);
-    cout << '\n';
+    int n;
+    cout << "Enter a number to print multiplication table: ";
+    cin >> n;
+    printTable(n);
     return 0;
 }
