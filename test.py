@@ -1,18 +1,34 @@
-class processStirng:
-    def __init__(self, str):
-        self.str = str
+class bankAccount:
+    def __init__(self, accountNo, balance, interestRate):
+        self.accountNo = accountNo
+        self.balance = balance
+        self.interestRate = interestRate
 
-    def getCharCount(self):
-        result = {'b': 0, 'c': 0, 'd': 0, 'f': 0, 'g': 0, 'h': 0, 'z': 0}
-        for i in self.str:
-            if i in result:
-                result[i] += 1
-        return result
+    def print(self):
+        print("Account Number: ", self.accountNo)
+        print("Balance: ", self.balance)
+        print("Interest Rate: ", self.interestRate)
+
+
+class bank:
+    def __init__(self, accounts):
+        self.accounts = accounts
+
+    def sortAccount(self):
+        sortedAccountList = sorted(self.accounts, key=lambda x: x.accountNo)
+        for i in sortedAccountList:
+            i.print()
+            print()
 
 
 def main():
-    p = processStirng(input("Enter a string: "))
-    print(p.getCharCount())
+    bnk = bank([
+        bankAccount(1, 1000, 5),
+        bankAccount(3, 2000, 5.5),
+        bankAccount(10, 50000, 4.4),
+        bankAccount(9, 4450, 57)
+    ])
+    bnk.sortAccount()
 
 
 if __name__ == "__main__":
