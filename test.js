@@ -1,11 +1,7 @@
-output = ""
-str1 = "Javascript"
-repeat = 3
-
-for (let i = 0; i < str1.length; i++) {
-    for (let j = 0; j < repeat; j++) {
-        output += str1[i]
+output = 0
+for (let i = 1; i <= 1000; i++) {
+    if (i % 5 == 0 && i % 7 == 0) {
+        output += i
     }
 }
-
-console.log(output);
+console.log("Sum of multiples of 5 and 7 less than 1000 is", output)

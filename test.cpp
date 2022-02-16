@@ -1,26 +1,17 @@
 #include <iostream>
-#include <utility>
-#include <string.h>
 using namespace std;
-pair<bool, bool> hasDashOnBothSides(int argc, char **argv)
+int main()
 {
-    bool ans1 = true, ans2 = false;
-    for (int i = 1; i < argc; i++)
+    cout << "Enter a character and the side length: ";
+    string str;
+    cin >> str;
+    for (int i = '0'; i < str[1]; i++)
     {
-        if (strlen(argv[i]) == 1 && argv[i][0] == '-')
+        for (int j = '0'; j < str[1]; j++)
         {
-            ans2 = true;
+            cout << str[0];
         }
-        if (argv[i][0] != '-' || argv[i][strlen(argv[i]) - 1] != '-')
-        {
-            ans1 = false;
-        }
+        cout << '\n';
     }
-    return {ans1, ans2};
-}
-int main(int argc, char **argv)
-{
-    pair<bool, bool> ans = hasDashOnBothSides(argc, argv);
-    cout << "Output: " << ((ans.first) ? "True" : "False") << " " << ((ans.second) ? "True" : "False") << '\n';
     return 0;
 }
