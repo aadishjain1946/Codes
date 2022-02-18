@@ -1,7 +1,13 @@
-output = 0
-for (let i = 1; i <= 1000; i++) {
-    if (i % 5 == 0 && i % 7 == 0) {
-        output += i
+function checkEmail(emailId) {
+    let regexPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (emailId.match(regexPattern)) {
+        return true;
+    } else {
+        return false;
     }
 }
-console.log("Sum of multiples of 5 and 7 less than 1000 is", output)
+
+let emailId = "jahdjhad@gmail.com";
+let emailId1 = "jahdjhad@gmail";
+console.log(checkEmail(emailId));
+console.log(checkEmail(emailId1));
