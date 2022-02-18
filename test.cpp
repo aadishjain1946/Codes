@@ -1,17 +1,33 @@
 #include <iostream>
 using namespace std;
-int main()
+bool extractDebugOption(int n, char **str)
 {
-    cout << "Enter a character and the side length: ";
-    string str;
-    cin >> str;
-    for (int i = '0'; i < str[1]; i++)
+    string comp = "/debug yes";
+    for (int i = 0; i < n; i++)
     {
-        for (int j = '0'; j < str[1]; j++)
+        for (int j = 0; str[i][j] != '\0'; i++)
         {
-            cout << str[0];
+            bool flag = true;
+            cout << str[i] << "\n";
+            for (int k = 0; k < comp.length(); k++, j++)
+            {
+                cout << "a";
+                if (str[i][j] != comp[k] || str[i][j] == '\0')
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag)
+            {
+                return true;
+            }
         }
-        cout << '\n';
     }
+    return false;
+}
+int main(int argv, char **argc)
+{
+    cout << ((extractDebugOption(argv, argc)) ? "True" : "False");
     return 0;
 }
