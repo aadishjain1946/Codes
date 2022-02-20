@@ -4,21 +4,26 @@ public class test
     public static void main(String[] args)  
     {  
         Scanner scnObj = new Scanner(System.in);
-        String str1 = scnObj.nextLine();
-        String str2 = scnObj.nextLine();
-        str1 = str1.toLowerCase();
-        str2 = str2.toLowerCase();
-        String [] strArr = str2.split(" ");
-        int output = 0;
-        for(int i = 0;i<strArr.length;i++){
-            if(str1.equals(strArr[i])){
-                output++;
+        int n = scnObj.nextInt();
+        int m = scnObj.nextInt();
+        int []a = new int[n];
+        int []b = new int[m];
+        for(int i = 0;i<n;i++){
+            a[i] = scnObj.nextInt();
+        }
+        for(int i = 0;i<m;i++){
+            b[i] = scnObj.nextInt();
+        }
+        HashSet<Integer> elem = new HashSet<>();
+        ArrayList<Integer> c = new ArrayList<>();
+        for(int i = 0;i<n;i++){
+            elem.add(a[i]);
+        }
+        for(int i = 0;i<m;i++){
+            if(elem.contains(b[i])){
+                elem.remove(b[i]);
             }
         }
-        if(output > 0){
-            System.out.println(str1 + " is contained " + output +" times in the array.");
-        }else{
-            System.out.println(str1 + " was NOT found in the array");
-        }
+        System.out.println("Elements: " + elem);
     }  
 }  
