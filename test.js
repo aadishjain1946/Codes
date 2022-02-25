@@ -1,13 +1,14 @@
-function checkEmail(emailId) {
-    let regexPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (emailId.match(regexPattern)) {
-        return true;
+let strArray = ["Javascript", "Java", "Java", "Python", "Rust", "Java", "Python", "Go", "Javascript", "Python"]
+let myDict = {}
+
+for (let i = 0; i < strArray.length; i++) {
+    if (strArray[i] == "Java") {
+        continue;
+    }
+    if (strArray[i] in myDict) {
+        myDict[strArray[i]] += 1
     } else {
-        return false;
+        myDict[strArray[i]] = 1
     }
 }
-
-let emailId = "jahdjhad@gmail.com";
-let emailId1 = "jahdjhad@gmail";
-console.log(checkEmail(emailId));
-console.log(checkEmail(emailId1));
+console.log(myDict)
