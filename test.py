@@ -1,8 +1,9 @@
 def main():
-    kineticEnergy = float(input("Enter Kinetic Energy: "))
-    totalEnergy = float(input("Enter Total Energy: "))
-    potentialEnergy = totalEnergy - kineticEnergy
-    print("Total Energy:", potentialEnergy)
+    word1, word2 = input("Enter words: ").split(" ")
+    if word1 == word2:
+        print("Super Anagram!")
+    else:
+        print("Huh?")
 
 
 if __name__ == "__main__":
