@@ -1,12 +1,15 @@
 #include <iostream>
 using namespace std;
+int f(int n)
+{
+    if (n == 1)
+    {
+        return 1;
+    }
+    return 2 * f(n - 1) + n * n * n;
+}
 int main()
 {
-    int count = 1, sum = 0;
-    for (; count <= 99; count++)
-    {
-        sum += count;
-    }
-    cout << "Sum: " << sum << '\n';
+    cout << "Output: " << f(5);
     return 0;
 }
