@@ -1,15 +1,13 @@
 #include <iostream>
 using namespace std;
-int f(int n)
+int *setup(int n)
 {
-    if (n == 1)
-    {
-        return 1;
-    }
-    return 2 * f(n - 1) + n * n * n;
+    int *a = new int[n];
+    for (int i = 0; i < n; i++)
+        a[i] = i + 1;
+    return a;
 }
 int main()
 {
-    cout << "Output: " << f(5);
     return 0;
 }
