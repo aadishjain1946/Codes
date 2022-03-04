@@ -1,13 +1,30 @@
 #include <iostream>
+#include <vector>
 using namespace std;
-int *setup(int n)
+class calculations
 {
-    int *a = new int[n];
-    for (int i = 0; i < n; i++)
-        a[i] = i + 1;
-    return a;
-}
+public:
+    void factorial(int n)
+    {
+        int result = n;
+        for (int i = n - 1; i > 0; i--)
+        {
+            result *= i;
+        }
+        cout << "Fact of " << n << " " << result << "\n";
+    }
+    void print(int arr[], int n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            factorial(arr[i]);
+        }
+    }
+};
 int main()
 {
+    calculations c1;
+    int arr[] = {1, 2, 3, 4, 5};
+    c1.print(arr, 5);
     return 0;
 }
