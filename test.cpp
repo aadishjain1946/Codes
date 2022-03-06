@@ -1,30 +1,19 @@
 #include <iostream>
-#include <vector>
 using namespace std;
-class calculations
+bool under_age(int age, int limit = 21)
 {
-public:
-    void factorial(int n)
+    if (age < limit)
     {
-        int result = n;
-        for (int i = n - 1; i > 0; i--)
-        {
-            result *= i;
-        }
-        cout << "Fact of " << n << " " << result << "\n";
+        return true;
     }
-    void print(int arr[], int n)
+    else
     {
-        for (int i = 0; i < n; i++)
-        {
-            factorial(arr[i]);
-        }
+        return false;
     }
-};
+}
 int main()
 {
-    calculations c1;
-    int arr[] = {1, 2, 3, 4, 5};
-    c1.print(arr, 5);
+    bool too_young = under_age(30, 20);
+    cout << "too_young: " << ((too_young) ? "True" : "False");
     return 0;
 }
