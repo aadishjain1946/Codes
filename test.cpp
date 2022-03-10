@@ -1,19 +1,16 @@
 #include <iostream>
 using namespace std;
-bool under_age(int age, int limit = 21)
+int power(int x, int n)
 {
-    if (age < limit)
+    if (n == 1)
     {
-        return true;
+        return x;
     }
-    else
-    {
-        return false;
-    }
+    return x * power(x, n - 1);
 }
 int main()
 {
-    bool too_young = under_age(30, 20);
-    cout << "too_young: " << ((too_young) ? "True" : "False");
+    int num = power(2, 4);
+    cout << "2 power 4: " << num << '\n';
     return 0;
 }
