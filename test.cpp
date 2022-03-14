@@ -1,29 +1,19 @@
 #include <iostream>
 using namespace std;
-class node
-{
-public:
-    int num;
-    node *next;
-};
 int main()
 {
-    node *head = new node();
-    node *n1 = new node();
-    node *n2 = new node();
-    cout << "Enter 3 node: ";
-    cin >> head->num;
-    cin >> n1->num;
-    cin >> n2->num;
-    head->next = n1;
-    n1->next = n2;
-    n2->next = NULL;
-    node *temp = head;
-    cout << "Output: ";
-    while (temp)
+    int i = 1;
+    switch (i)
     {
-        cout << temp->num << " ";
-        temp = temp->next;
+    case 1:
+        cout << "Hello\n";
+        break;
+    case 2:
+        cout << "Bye\n";
+        break;
+    default:
+        cout << "Good bye.";
+        break;
     }
     return 0;
 }
