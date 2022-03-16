@@ -1,19 +1,18 @@
 #include <iostream>
 using namespace std;
+void replactCharInString(string s)
+{
+    for (int i = 0; i < s.length(); i++)
+    {
+        if (s[i] == 'c')
+        {
+            s[i] = 'a' + 1 + (std::rand() % (26 - 1 + 1));
+        }
+    }
+    cout << "String " << s << " converted to : " << s << '\n';
+}
 int main()
 {
-    int i = 1;
-    switch (i)
-    {
-    case 1:
-        cout << "Hello\n";
-        break;
-    case 2:
-        cout << "Bye\n";
-        break;
-    default:
-        cout << "Good bye.";
-        break;
-    }
+    replactCharInString("aabbcc");
     return 0;
 }
