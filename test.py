@@ -1,10 +1,9 @@
-import math
+str1 = input("Enter string 1: ")
+str2 = input("Enter string 2: ")
 
-x_int = 7
-x_float = float(x_int)
+x1 = len(str1)
+x2 = len(str2)
 
-y_float = math.pi
-y_int = int(y_float)
+output = x1**3 - x2**2 + x1 * x2 - 5
 
-z_str = "3.75"
-z_float = float(z_str)
+print("Output:", output)

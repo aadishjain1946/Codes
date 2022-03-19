@@ -3,11 +3,13 @@ import java.util.*;
 public class test {
 	public static void main(String argc[])
 	{
-		Scanner scnObj = new Scanner(System.in);
-		System.out.print("Choose a number: ");
-		int n = scnObj.nextInt();
-		for(int i = 1;i<=12;i++){
-			System.out.println(n + "X" + i + " = " + (n*i));
+		int arr[] = {1,2,9,9,9,6,7,9,9,4,5,9,9};
+		int countNine = 0;
+		for(int i = 0;i<arr.length;i++){
+			if(arr[i] == 9){
+				countNine++;
+			}
 		}
+		System.out.println("Number of Nines: " + countNine);
 	}
 }

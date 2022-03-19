@@ -1,18 +1,32 @@
 #include <iostream>
 using namespace std;
-void replactCharInString(string s)
+bool no_zeros(int arr[], int n)
 {
-    for (int i = 0; i < s.length(); i++)
+    int count = 0;
+    for (int i = 0; i < n; i++)
     {
-        if (s[i] == 'c')
+        if (arr[i] == 0)
         {
-            s[i] = 'a' + 1 + (std::rand() % (26 - 1 + 1));
+            for (int j = i; j < n - 1; j++)
+            {
+                arr[j] = arr[j + 1];
+            }
+            count++;
+            i--;
         }
     }
-    cout << "String " << s << " converted to : " << s << '\n';
+    cout << "Output: ";
+    for (int i = 0; i < n - count; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << '\n';
+    return ((count > 0) ? true : false);
 }
 int main()
 {
-    replactCharInString("aabbcc");
+    int arr[] = {5, 4, 0, 0, 1, 2, 3, 0, 6, 7, 0, 8, 0, 9};
+    bool out = no_zeros(arr, 14);
+    cout << ((out) ? "True" : "False");
     return 0;
 }
