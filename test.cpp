@@ -1,18 +1,32 @@
 #include <iostream>
 using namespace std;
+
+int countSwaps(int inputArray[], int n)
+{
+    int result = 0;
+    int zeros = 0;
+
+    for (int i = n - 1; i >= 0; i--)
+    {
+        if (inputArray[i] == 0)
+            zeros += 1;
+        else
+            result += zeros;
+    }
+    return result;
+}
+
 int main()
 {
-    string str;
-    cout << "Input: ";
-    cin >> str;
-    string output = "";
-    for (int i = 0; i < str.length(); i++)
+    cout << "Input:\n";
+    int n;
+    cin >> n;
+    int *inputArray = new int[n];
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < 3; j++)
-        {
-            output += str[i];
-        }
+        cin >> inputArray[i];
     }
-    cout << "Output: " << output;
+    cout << "Output:\n";
+    cout << countSwaps(inputArray, n);
     return 0;
 }
