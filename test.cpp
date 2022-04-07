@@ -1,17 +1,29 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
-int main()
+class tree
 {
-    int n;
-    cout << "Enter a number: ";
-    cin >> n;
-    if (n % 7 == 0)
+public:
+    int data;
+    tree *left, *right;
+};
+class BinaryTreeUtils
+{
+public:
+    int size(tree *root)
     {
-        cout << "Divided!\n";
+        if (root == NULL)
+        {
+            return 0;
+        }
+        return size(root->left) + size(root->right) + 1;
     }
-    else
+    int size(tree *root)
     {
-        cout << "Not Divided!\n";
+        if (root == NULL)
+        {
+            return 0;
+        }
+        return max(size(root->left), size(root->right)) + 1;
     }
-    return 0;
-}
+};

@@ -1,18 +1,8 @@
-import math
-
-
 def main():
-    for i in range(1, 6):
-        print("Cos", i, "->", math.cos(i))
-        print("Sin", i, "->", math.sin(i))
-        print("tan", i, "->", math.tan(i))
-        print("degrees", i, "->", math.degrees(i))
-        print("radians", i, "->", math.radians(i))
-        print()
-
-    str = "ILOVENVSU"
-    asciiStr = [ord(c) for c in str]
-    print(str, "to ASCII:", asciiStr)
+    n1, n2 = (int(i) for i in input("Enter 2 numbers: ").split(" "))
+    print("Sum:", n1 + n2)
+    print("Bitwise XOR: ", n1 ^ n2)
+    print("Bitwise OR: ", n1 ^ n2)
 
 
 if __name__ == "__main__":
