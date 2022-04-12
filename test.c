@@ -1,38 +1,21 @@
-#include <stdio.h>
-int calculateMedian(int arr[], int n)
+int min(int a, int b, int c)
 {
-    // sort the array
-    for (int i = 0; i < n; ++i)
+    if (a < b)
     {
-        for (int j = i + 1; j < n; ++j)
+        if (a < c)
         {
-            if (arr[i] > arr[j])
-            {
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
+            return a;
         }
     }
-    if (n % 2 == 0)
+    else if (c < b)
     {
-        return arr[n / 2];
+        if (c < a)
+        {
+            return c;
+        }
     }
     else
     {
-        return (int)((arr[(n - 1) / 2] + arr[(n + 1) / 2]) / 2);
+        return b;
     }
-}
-int main()
-{
-    int n;
-    scanf("%d", &n);
-    int arr[n];
-    for (int i = 0; i < n; i++)
-    {
-        scanf("%d", &arr[i]);
-    }
-    int median = calculateMedian(arr, n);
-    printf("Median: %d", median);
-    return 0;
 }
