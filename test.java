@@ -1,13 +1,22 @@
 import java.util.*;
-public class test {
-	public static int random(){
-		return (int)(Math.random() * ((9 - 1) + 1)) + 1;
+class student{
+	public String name;
+}
+class GraduateStudent extends student{
+	public int age;
+	public void printName(){
+		System.out.println(name);
 	}
+}
+public class test {
 	public static void main(String argc[])
 	{
-		int a = random();
-		int b = random();
-		int var1 = (a > b)? a: b;
-		System.out.println("Var1: " + var1);
+		student A = new GraduateStudent();
+		student B = new student();
+		GraduateStudent C = (GraduateStudent) A;
+		GraduateStudent D = (GraduateStudent) B;
+		GraduateStudent E = new GraduateStudent();
+		A.printName();
+		B.printName();
 	}
 }

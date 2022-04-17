@@ -1,61 +1,19 @@
 #include <iostream>
 using namespace std;
-int main()
+float getMax(float a, float b)
 {
-    char grade;
-    float sum = 0.0;
-    float count = 0.0;
-    cout << "Input: \n";
-    do
+    if (a > b)
     {
-        cin >> grade;
-        switch (grade)
-        {
-        case 'A':
-            sum += 4.0;
-            count++;
-            break;
-        case 'B':
-            sum += 3.0;
-            count++;
-            break;
-        case 'C':
-            sum += 2.0;
-            count++;
-            break;
-        case 'D':
-            sum += 1.0;
-            count++;
-            break;
-        case 'F':
-            sum += 0.0;
-            count++;
-            break;
-        default:
-            break;
-        }
-    } while (grade >= 'A' && grade <= 'F' && grade != 'E');
-    float average = int(sum / count);
-    cout << "Output: ";
-    if (average == 4)
-    {
-        cout << "A";
-    }
-    else if (average == 3)
-    {
-        cout << "B";
-    }
-    else if (average == 2)
-    {
-        cout << "C";
-    }
-    else if (average == 1)
-    {
-        cout << "D";
+        return a;
     }
     else
     {
-        cout << "F";
+        return b;
     }
-    return 0;
+}
+int main()
+{
+    float a, b, c, d;
+    cin >> a >> b >> c >> d;
+    cout << "Largest value is " << getMax(getMax(a, b), getMax(c, d));
 }
