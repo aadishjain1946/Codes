@@ -1,22 +1,29 @@
 import java.util.*;
-class student{
-	public String name;
-}
-class GraduateStudent extends student{
-	public int age;
-	public void printName(){
-		System.out.println(name);
-	}
-}
 public class test {
+	static class Rectangle{
+		int length, breadth;
+		Rectangle(int l, int b){
+			this.length = l;
+			this.breadth = b;
+		}
+		int areaOfRectangle(){
+			return length*breadth;
+		}
+	}
+	static class Square{
+		int side;
+		Square(){
+			this.side = 10;
+		}
+		static int areaOfSquare(int side){
+			return side*side;
+		}
+	}
 	public static void main(String argc[])
 	{
-		student A = new GraduateStudent();
-		student B = new student();
-		GraduateStudent C = (GraduateStudent) A;
-		GraduateStudent D = (GraduateStudent) B;
-		GraduateStudent E = new GraduateStudent();
-		A.printName();
-		B.printName();
+		Rectangle r1 = new Rectangle(4,5);
+		Square s1 = new Square();
+		System.out.println("Area of square: " + s1.areaOfSquare(s1.side));
+		System.out.println("Area of rectangle: " + r1.areaOfRectangle());
 	}
 }

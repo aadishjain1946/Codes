@@ -1,7 +1,7 @@
-function remaining(a, b) {
-    return (a % b);
+function calculateSum(a, b, c) {
+    return (a + b + c)
 }
-console.log(remaining(1, 3))
-console.log(remaining(3, 4))
-console.log(remaining(-9, 45))
-console.log(remaining(5, 5))
+
+console.log("Sum of 5, 6, 7: ", calculateSum(5, 6, 7))
+console.log("Sum of 23, 16, 40: ", calculateSum(23, 16, 40))
+console.log("Sum of 56, 88, 101: ", calculateSum(56, 88, 101))
