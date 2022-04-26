@@ -1,19 +1,16 @@
 #include <iostream>
+#include <fstream>
 using namespace std;
-float getMax(float a, float b)
-{
-    if (a > b)
-    {
-        return a;
-    }
-    else
-    {
-        return b;
-    }
-}
 int main()
 {
-    float a, b, c, d;
-    cin >> a >> b >> c >> d;
-    cout << "Largest value is " << getMax(getMax(a, b), getMax(c, d));
+    ofstream fileObject;
+    fileObject.open("result.txt");
+    for (int i = 0; i < 6; i++)
+    {
+        for (int j = 0; j < i + 1; j++)
+        {
+            fileObject << "*";
+        }
+        fileObject << "\n";
+    }
 }
