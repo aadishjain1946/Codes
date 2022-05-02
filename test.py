@@ -1,14 +1,8 @@
-def Multiply2(mylist):
-    print(mylist[0] * 2, end="")
-    for i in range(1, len(mylist)):
-        print("", end=".")
-        print(mylist[i] * 2, end="")
+import sys
 
+var1, var2, var3, var4 = "testing", "hello world", 20, 55.06
 
-def main():
-    mylist = [1, 2, 3, 4]
-    Multiply2(mylist)
-
-
-if __name__ == "__main__":
-    main()
+print(sys.getsizeof(var1))
+print(sys.getsizeof(var2))
+print(sys.getsizeof(var3))
+print(sys.getsizeof(var4))
