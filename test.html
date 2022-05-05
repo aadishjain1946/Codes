@@ -9,18 +9,15 @@
 </head>
 
 <body>
-    <p>Convert parseInt</p>
-    <input type="number" name="" id="currency">
-    <button onclick="convert()">Click</button>
+    <p>Print Name & ID</p>
+    <button onclick="print()">Click</button>
     <strong>
         <p id="output"></p>
     </strong>
 </body>
 <script>
-    function convert() {
-        let curr = parseInt(document.getElementById("currency").value);
-        let dollar = curr / 115;
-        document.getElementById("output").innerHTML = (curr + " Ksh = $ " + dollar);
+    function print() {
+        document.getElementById("output").innerHTML = "Name: Reem ID:201912096";
     }
 </script>
 
