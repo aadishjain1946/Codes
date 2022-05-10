@@ -1,8 +1,15 @@
-import sys
+def towards(li):
+    output = []
+    for i in range(len(li) - 1, -1, -1):
+        output.append(li[i])
+    return output
 
-var1, var2, var3, var4 = "testing", "hello world", 20, 55.06
 
-print(sys.getsizeof(var1))
-print(sys.getsizeof(var2))
-print(sys.getsizeof(var3))
-print(sys.getsizeof(var4))
+def main():
+    output = towards(['a', 'b', 'c', 'd'])
+    print("Output:", output)
+
+
+if __name__ == '__main__':
+    main()
+    
