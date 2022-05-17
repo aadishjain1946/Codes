@@ -1,15 +1,14 @@
-def towards(li):
-    output = []
-    for i in range(len(li) - 1, -1, -1):
-        output.append(li[i])
-    return output
+import threading
+from datetime import datetime
 
 
-def main():
-    output = towards(['a', 'b', 'c', 'd'])
-    print("Output:", output)
+def print_time():
+    threading.Timer(5.0, print_time).start()
+    current_time = datetime.now().time().strftime("%H:%M:%S")
+    current_date = datetime.now().strftime("%Y-%m-%d")
+    print("----------------------------")
+    print("Date:", current_date)
+    print("Time:", current_time)
 
 
-if __name__ == '__main__':
-    main()
-    
+print_time()
